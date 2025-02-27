@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musique et Contrôle</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button:hover {
+            color: gray;
+        }
+
+        input[type="range"] {
+            cursor: pointer;
+        }
+
+        /* Ajout d'une police élégante via Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ajustement de la section Physique */
+        .physique {
+            margin: 50px auto; /* Centre la section avec des marges égales en haut et en bas */
+            padding: 20px;
+            background-color: #000000; /* Fond noir */
+            border: 3px solid #ff0000; /* Contour rouge */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre discrète */
+            width: 90%; /* Prend 90% de la largeur de la page pour un espace de chaque côté */
+            box-sizing: border-box; /* Assure que le padding et le bord ne dépassent pas la largeur */
+            font-weight: bold; /* Met tout le texte en gras */
+        }
+
+        /* Style du titre */
+        .physique h2 {
+            font-size: 32px; /* Taille du titre */
+            color: #ffffff; /* Couleur du titre en blanc */
+            margin-bottom: 15px;
+            text-align: center; /* Titre centré */
+            font-family: 'Cinzel', serif; /* Police élégante */
+            font-weight: 600; /* Gras pour le titre */
+        }
+
+        /* Style du texte */
+        .physique p {
+            font-size: 19px;
+            line-height: 1.4;
+            color: #ddd; /* Couleur claire pour le texte */
+            text-align: justify; /* Justifier le texte */
+            font-family: 'Cinzel', serif; /* Police élégante pour le texte */
+        }
+
+        /* Mise en valeur d'éléments spécifiques dans le texte */
+        .physique p span {
+            color: #ff4500; /* Mettre en valeur avec une couleur feu */
+        }
+
+        .image-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0px;
+}
+
+        .image-container img {
+    max-width: 100%; /* Permet aux images de s'ajuster en fonction de la largeur de leur conteneur */
+    height: auto; /* Assure que l'aspect ratio de chaque image est conservé */
+    border-radius: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Musique -->
+    <audio id="background-music" autoplay loop>
+        <source src="What The Firelight Casts Theme - AKVN.mp4" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <!-- Contrôles -->
+    <div class="controls">
+        <!-- Bouton lecture/pause -->
+        <button id="play-pause-btn" onclick="togglePlayPause()">⏸️</button>
+        <!-- Contrôle du volume -->
+        <label for="volume-slider">
+            🔊
+        </label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <!-- Section Physique -->
+    <div class="physique">
+        <h2>╭───༺☆༻ Description Physique ༺☆༻───╮</h2>
+        <p>
+            Lyca dégage une présence écrasante, mêlant majesté et danger, comme si son être portait le poids d’un héritage draconique ancien et puissant. Sa peau, d'une pâleur lumineuse, semble capter et refléter la lumière. Ses yeux, d’un vert éclatant et perçant, captivent quiconque ose les croiser.<br><br>
+
+            Sa chevelure dorée, fluide comme une cascade de lumière, descend en vagues soyeuses le long de son dos. Vivante, elle danse au gré de ses mouvements, évoquant des flammes ondoyantes. Bien qu’elle attache souvent ses cheveux avec pragmatisme pour le combat, des mèches indisciplinées encadrent son visage, ajoutant une touche de sauvage élégance à sa beauté raffinée.<br><br>
+
+            Lyca porte sur sa tête une couronne naturelle de cornes draconiques, témoignage de son puissant héritage. Deux grandes cornes principales, légèrement incurvées vers le haut, émergent de chaque côté de son crâne, arborant une texture sombre et lisse, parsemée de reflets rougeoyants rappelant la chaleur des braises. Juste au-dessus de ses oreilles, deux autres cornes plus petites pointent vers l’arrière. Entre ses cornes principales, juste au-dessus de son front, se trouve un bijou finement travaillé fait à partir d'obsidienne, une roche volcanique insensible à la lave. Ce bijou, assorti à ses boucles d’oreilles qui reprennent le même motif losangé.<br><br>
+
+            Ses ailes et sa queue, bien que majestueuses et fonctionnelles, sont des traits "incomplets" de sa lignée. Ces parties de son corps, n’étant pas pleinement ancrées dans sa forme physique, peuvent disparaître et réapparaître à sa guise. Lorsqu’elles se manifestent, ses ailes, vastes et puissantes, s’embrasent de flammes vibrantes qui projettent une chaleur et une lumière dorée dans l’air. Sa queue, robuste et couverte d’écailles luisantes, s’étend avec grâce derrière elle, renforçant son équilibre et sa fluidité martiale. Lorsqu'elle choisit de les dissimuler, elle conserve une allure humaine tout aussi impressionnante, mais son aura de puissance reste indéniable.<br><br>
+
+            Le centre de sa poitrine est marqué par une étoile lumineuse à quatre branches, qui pulse doucement avec une lumière dorée. Plus qu’un simple ornement, cette étoile est une manifestation physique de sa puissance vitale et magique, dont l’intensité fluctue selon son état de santé ou l’énergie qu’elle canalise.
+        </p>
+    </div>
+
+    <!-- Image en dessous de la section Physique -->
+    <div class="image-container">
+        <img src="uwu.jpg" alt="Image de Lyca" />
+        <img src="fleur.jpg" alt="Image de Lyca" />
+    </div>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const volumeSlider = document.getElementById('volume-slider');
+
+        // Fonction pour basculer entre lecture et pause
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = "⏸️"; // Icône pause
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = "▶️"; // Icône lecture
+            }
+        }
+
+        // Ajustement du volume avec le slider
+        volumeSlider.addEventListener('input', function () {
+            audio.volume = this.value;
+        });
+
+        // Initialisation du volume à 50 % au chargement
+        audio.volume = volumeSlider.value;
+    </script>
+</body>
+</html>
