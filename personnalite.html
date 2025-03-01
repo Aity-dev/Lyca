@@ -12,46 +12,156 @@
             margin: 0;
             padding: 0;
         }
-
-        .controls {
+         /* Navigation buttons styling */
+         .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            gap: 30px;
+        }
+        
+        .nav-button {
+            background: linear-gradient(45deg, #910000, #ff3700);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+            background: linear-gradient(45deg, #ff3700, #910000);
+        }
+        
+        .nav-button::before {
+            content: "";
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        /* Nouveaux styles pour les contrôles audio du premier document */
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 12px 18px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.6);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
-        button {
-            background-color: transparent;
+        .controls:hover {
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.8);
+        }
+
+        #play-pause-btn {
+            background-color: rgba(255, 0, 0, 0.7);
             border: none;
             color: white;
-            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        button:focus {
-            outline: none;
+        #play-pause-btn:hover {
+            background-color: rgba(255, 0, 0, 1);
+            transform: scale(1.1);
         }
 
-        button:hover {
-            color: gray;
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .volume-icon {
+            color: #ff4500;
+            font-size: 20px;
+            width: 20px;
         }
 
         input[type="range"] {
+            appearance: none;
+            height: 6px;
+            background: linear-gradient(to right, #ff4500, #ff0000);
+            border-radius: 10px;
+            outline: none;
+            width: 120px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
             cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: #ff4500;
+        }
+
+        .music-title {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: #ddd;
+            margin-left: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+            transition: color 0.3s ease;
+        }
+
+        .music-title:hover {
+            color: #ff4500;
         }
 
         /* Ajout d'une police élégante via Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-        body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
 
         /* Ajustement de la section Physique */
         .physique {
@@ -90,52 +200,69 @@
             color: #ff4500; /* Mettre en valeur avec une couleur feu */
         }
 
+        /* Style amélioré pour les images */
         .image-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0px;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 30px auto;
+            width: 90%;
+        }
 
         .image-container img {
-    max-width: 100%; /* Permet aux images de s'ajuster en fonction de la largeur de leur conteneur */
-    height: auto; /* Assure que l'aspect ratio de chaque image est conservé */
-    border-radius: 10px;
-}
+            width: 47%; /* Taille plus grande que la version précédente */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 0, 0, 0.5);
+        }
 
-
+        .image-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+            border: 2px solid rgba(255, 0, 0, 0.8);
+        }
     </style>
 </head>
 <body>
+    <body>
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Identité</a>
+            <a href="histoire.html" class="nav-button">Histoire</a>
+        </div>
+    </body>
     <!-- Musique -->
     <audio id="background-music" autoplay loop>
         <source src="What The Firelight Casts Theme - AKVN.mp4" type="audio/mpeg">
         Votre navigateur ne supporte pas l'audio.
     </audio>
 
-    <!-- Contrôles -->
+    <!-- Nouveaux contrôles audio du premier document -->
     <div class="controls">
-        <!-- Bouton lecture/pause -->
         <button id="play-pause-btn" onclick="togglePlayPause()">⏸️</button>
-        <!-- Contrôle du volume -->
-        <label for="volume-slider">
-            🔊
-        </label>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+        <div class="volume-container">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume(this.value)">
+        </div>
+        <div class="music-title">What The Firelight Casts</div>
     </div>
 
     <!-- Section Physique -->
     <div class="physique">
         <h2>╭───༺☆༻ Description Physique ༺☆༻───╮</h2>
         <p>
-            Lyca dégage une présence écrasante, mêlant majesté et danger, comme si son être portait le poids d’un héritage draconique ancien et puissant. Sa peau, d'une pâleur lumineuse, semble capter et refléter la lumière. Ses yeux, d’un vert éclatant et perçant, captivent quiconque ose les croiser.<br><br>
+            Lyca dégage une présence écrasante, mêlant majesté et danger, comme si son être portait le poids d'un héritage draconique ancien et puissant. Sa peau, d'une pâleur lumineuse, semble capter et refléter la lumière. Ses yeux, d'un vert éclatant et perçant, captivent quiconque ose les croiser.<br><br>
 
-            Sa chevelure dorée, fluide comme une cascade de lumière, descend en vagues soyeuses le long de son dos. Vivante, elle danse au gré de ses mouvements, évoquant des flammes ondoyantes. Bien qu’elle attache souvent ses cheveux avec pragmatisme pour le combat, des mèches indisciplinées encadrent son visage, ajoutant une touche de sauvage élégance à sa beauté raffinée.<br><br>
+            Sa chevelure dorée, fluide comme une cascade de lumière, descend en vagues soyeuses le long de son dos. Vivante, elle danse au gré de ses mouvements, évoquant des flammes ondoyantes. Bien qu'elle attache souvent ses cheveux avec pragmatisme pour le combat, des mèches indisciplinées encadrent son visage, ajoutant une touche de sauvage élégance à sa beauté raffinée.<br><br>
 
-            Lyca porte sur sa tête une couronne naturelle de cornes draconiques, témoignage de son puissant héritage. Deux grandes cornes principales, légèrement incurvées vers le haut, émergent de chaque côté de son crâne, arborant une texture sombre et lisse, parsemée de reflets rougeoyants rappelant la chaleur des braises. Juste au-dessus de ses oreilles, deux autres cornes plus petites pointent vers l’arrière. Entre ses cornes principales, juste au-dessus de son front, se trouve un bijou finement travaillé fait à partir d'obsidienne, une roche volcanique insensible à la lave. Ce bijou, assorti à ses boucles d’oreilles qui reprennent le même motif losangé.<br><br>
+            Lyca porte sur sa tête une couronne naturelle de cornes draconiques, témoignage de son puissant héritage. Deux grandes cornes principales, légèrement incurvées vers le haut, émergent de chaque côté de son crâne, arborant une texture sombre et lisse, parsemée de reflets rougeoyants rappelant la chaleur des braises. Juste au-dessus de ses oreilles, deux autres cornes plus petites pointent vers l'arrière. Entre ses cornes principales, juste au-dessus de son front, se trouve un bijou finement travaillé fait à partir d'obsidienne, une roche volcanique insensible à la lave. Ce bijou, assorti à ses boucles d'oreilles qui reprennent le même motif losangé.<br><br>
 
-            Ses ailes et sa queue, bien que majestueuses et fonctionnelles, sont des traits "incomplets" de sa lignée. Ces parties de son corps, n’étant pas pleinement ancrées dans sa forme physique, peuvent disparaître et réapparaître à sa guise. Lorsqu’elles se manifestent, ses ailes, vastes et puissantes, s’embrasent de flammes vibrantes qui projettent une chaleur et une lumière dorée dans l’air. Sa queue, robuste et couverte d’écailles luisantes, s’étend avec grâce derrière elle, renforçant son équilibre et sa fluidité martiale. Lorsqu'elle choisit de les dissimuler, elle conserve une allure humaine tout aussi impressionnante, mais son aura de puissance reste indéniable.<br><br>
+            Ses ailes et sa queue, bien que majestueuses et fonctionnelles, sont des traits "incomplets" de sa lignée. Ces parties de son corps, n'étant pas pleinement ancrées dans sa forme physique, peuvent disparaître et réapparaître à sa guise. Lorsqu'elles se manifestent, ses ailes, vastes et puissantes, s'embrasent de flammes vibrantes qui projettent une chaleur et une lumière dorée dans l'air. Sa queue, robuste et couverte d'écailles luisantes, s'étend avec grâce derrière elle, renforçant son équilibre et sa fluidité martiale. Lorsqu'elle choisit de les dissimuler, elle conserve une allure humaine tout aussi impressionnante, mais son aura de puissance reste indéniable.<br><br>
 
-            Le centre de sa poitrine est marqué par une étoile lumineuse à quatre branches, qui pulse doucement avec une lumière dorée. Plus qu’un simple ornement, cette étoile est une manifestation physique de sa puissance vitale et magique, dont l’intensité fluctue selon son état de santé ou l’énergie qu’elle canalise.
+            Le centre de sa poitrine est marqué par une étoile lumineuse à quatre branches, qui pulse doucement avec une lumière dorée. Plus qu'un simple ornement, cette étoile est une manifestation physique de sa puissance vitale et magique, dont l'intensité fluctue selon son état de santé ou l'énergie qu'elle canalise.
         </p>
     </div>
 
@@ -145,10 +272,24 @@
         <img src="fleur.jpg" alt="Image de Lyca" />
     </div>
 
+    <div class="physique">
+        <h2>╭───༺☆༻ Description Personnalité ༺☆༻───╮</h2>
+        <p>
+            Lyca est une âme marquée par le combat, façonnée par des siècles de solitude et de duels. Froide et distante, elle ne voyait autrefois en chaque guerrier ou soldat qu'une proie de plus à abattre. Elle n'accorde sa confiance qu'à ceux qu'elle juge dignes de son respect. Son passé de meurtrière n'est pas un fardeau qu'elle porte avec honte, mais plutôt un fardeau qu'elle accepte comme une partie d'elle-même.<br><br>
+
+            Elle évite les grandes villes principalement parce qu'elle recherchée par la plupart d'entre eux et préfère la quiétude de la solitude, s'introduisant dans les cités seulement lorsqu'elle est camouflée, dissimulant sa véritable nature.<br><br>
+
+            Bien qu'isolée depuis des siècles, une infime part d'elle aspire à changer, à renouer avec ce qu'elle a perdu, cherchant maladroitement à être plus sociable, plus humaine. Cependant, son désir constant de se mesurer à de puissants adversaires prend souvent le dessus, et, même lorsqu'elle essaie de se comporter différemment, l'excitation du combat l'obsède, chaque affrontement ravivant sa soif de défi insatiable.<br><br>
+
+            Cruelle et implacable en combat, Lyca n'hésite pas à utiliser toute sa puissance et ses pouvoirs pour anéantir son opposant. Après des siècles à se perfectionner, elle a développé une confiance presque arrogante en ses capacités, persuadée de sa supériorité. Mais, au fond, Lyca n'est ni invincible ni infaillible. Chaque victoire, chaque nouvelle bataille, ajoute une couche de fierté à son caractère mais accentue la solitude dans laquelle elle se trouve piégée.
+        </p>
+    </div>
+
     <script>
         const audio = document.getElementById('background-music');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const volumeSlider = document.getElementById('volume-slider');
+        const volumeIcon = document.querySelector('.volume-icon');
 
         // Fonction pour basculer entre lecture et pause
         function togglePlayPause() {
@@ -161,13 +302,25 @@
             }
         }
 
-        // Ajustement du volume avec le slider
-        volumeSlider.addEventListener('input', function () {
-            audio.volume = this.value;
-        });
+        // Fonction pour ajuster le volume
+        function updateVolume(volume) {
+            audio.volume = volume;
+            
+            // Mise à jour de l'icône de volume
+            if (volume >= 0.6) {
+                volumeIcon.textContent = "🔊";
+            } else if (volume >= 0.2) {
+                volumeIcon.textContent = "🔉";
+            } else if (volume > 0) {
+                volumeIcon.textContent = "🔈";
+            } else {
+                volumeIcon.textContent = "🔇";
+            }
+        }
 
-        // Initialisation du volume à 50 % au chargement
+        // Initialisation du volume à 50% au chargement
         audio.volume = volumeSlider.value;
+        updateVolume(volumeSlider.value);
     </script>
 </body>
 </html>

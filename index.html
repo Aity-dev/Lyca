@@ -49,7 +49,7 @@
             box-shadow: 2px 2px 5px rgba(223, 7, 7, 0.3);
             font-size: 28px;
             font-family: 'Cinzel', serif;
-            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
             text-align: center;
             z-index: 1;
             animation: flameEffect 1.5s infinite;
@@ -59,15 +59,58 @@
             50% { text-shadow: 0 0 15px rgba(255, 17, 0), 0 0 30px rgb(174, 0, 255); }
             100% { text-shadow: 0 0 5px rgba(255, 17, 0), 0 0 10px rgb(47, 0, 255); }
         }
-        .video-link {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            font-family: 'Cinzel', serif;
-            margin: 20px;
-            display: block;
-            text-align: center;
+        
+        /* Navigation buttons styling */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            gap: 30px;
         }
+        
+        .nav-button {
+            background: linear-gradient(45deg, #910000, #ff3700);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+            background: linear-gradient(45deg, #ff3700, #910000);
+        }
+        
+        .nav-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+        
         .separator {
             width: 80%;
             height: 4px;
@@ -75,6 +118,7 @@
             margin: 20px auto;
             border-radius: 2px;
         }
+        
         /* Conteneur pour les colonnes et l'image */
         .image-and-content {
             display: flex;
@@ -118,12 +162,12 @@
             margin-top: 20px
         }
         .booms {
-    max-width: 350px; /* Taille d'origine */
-    height: auto;
-    border-radius: 10px;
-    margin-left: 80px;
-    margin-top: 50px;
-    transform: scale(1.5); /* Agrandit l'image de 1.5x */
+            max-width: 350px; /* Taille d'origine */
+            height: auto;
+            border-radius: 10px;
+            margin-left: 80px;
+            margin-top: 50px;
+            transform: scale(1.5); /* Agrandit l'image de 1.5x */
         }
 
         /* Style pour chaque section de compétence avec bordure colorée uniquement */
@@ -152,7 +196,7 @@
             margin-bottom: 20px;
         }
         .passif {
-            border: 2px solid rgba(0, 0, 0, 0.8); /* Bordure jaune */
+            border: 2px solid rgba(0, 0, 0, 0.8); /* Bordure noire */
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -165,78 +209,18 @@
         article{
             transition: transform .2s;
         }
-        
-        
-.encadre-text {
-    color: rgb(255, 255, 255); /* Pareil ici */
-}
 
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.styled-button {
-    background-color: #ff0000;
-    color: #fafafa; /* Texte en blanc pour une visibilité maximale */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 414px; /* Largeur originale du site */
-    font-size: 16px; /* Taille de police plus grande */
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.10);
-    position: relative;
-    overflow: hidden;
-    text-shadow: 2px 2px 4px rgba(0,0,0,100); /* Ombre de texte pour améliorer la lisibilité */
-}
-
-
-.styled-button:hover {
-    background-color: #671ddd;
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 10px rgba(255, 0, 0, 0.411);
-}
-
-/* Effet de flamme */
-.styled-button::before,
-.styled-button::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, 
-        rgba(255, 165, 0, 0.6) 0%, 
-        rgba(255, 69, 0, 0.3) 50%, 
-        transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    animation: flame-flicker 0.5s infinite alternate;
-    z-index: 1;
-}
-
-.styled-button:hover::before,
-.styled-button:hover::after {
-    opacity: 1;
-}
-
-
-/* Animation de scintillement des flammes */
-@keyframes flame-flicker {
-    0% {
-        transform: scale(1);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1.05);
-        opacity: 0.9;
-    }
-}
+        /* Animation de scintillement des flammes */
+        @keyframes flame-flicker {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
     </style>
 </head>
 <body>
@@ -250,7 +234,11 @@
     <div class="encadre-text">Vicop Lyca</div>
 </header>
 
-<a href="ça cherche fort" class="video-link" target="_blank">En recherche d'ost</a>
+<!-- Nouvelle navigation avec les boutons -->
+<div class="nav-buttons">
+    <a href="personnalite.html" class="nav-button">Personnalité</a>
+    <a href="histoire.html" class="nav-button">Histoire de Lyca</a>
+</div>
 
 <div class="separator"></div>
 
@@ -277,44 +265,28 @@
             </article>
 
             <article class="skills-item teleportation-flammes">
-                <strong>Téléportation :</strong> Lyca entretient une connexion mystique avec le feu, lui permettant de se déplacer d'un foyer ardent à un autre en un éclair. Lorsqu'elle se concentre, son corps devient fluide comme la lave en fusion, se dissipant en un tourbillon d'étincelles pour réapparaître instantanément là où les flammes dansent. Plus l'incendie est intense, plus la téléportation est rapide et précise. Certains prétendent avoir vu Lyca traverser des murs de pierre embrasés, glissant entre les braises comme une ombre insaisissable.            </article>
+                <strong>Téléportation :</strong> Lyca entretient une connexion mystique avec le feu, lui permettant de se déplacer d'un foyer ardent à un autre en un éclair. Lorsqu'elle se concentre, son corps devient fluide comme la lave en fusion, se dissipant en un tourbillon d'étincelles pour réapparaître instantanément là où les flammes dansent. Plus l'incendie est intense, plus la téléportation est rapide et précise. Certains prétendent avoir vu Lyca traverser des murs de pierre embrasés, glissant entre les braises comme une ombre insaisissable.
+            </article>
 
             <article class="skills-item guerison">
                 <strong>Guérison :</strong> Bien que Lyca soit une guerrière impitoyable, son lien avec le feu lui confère également des pouvoirs de guérison. Lorsqu'elle est blessée, elle n'a qu'à plonger ses blessures meurtries dans une source de chaleur pour sentir sa chairs se renouveler d'elles-mêmes. La douleur s'estompe tandis que les plaies se referment, comme si le feu brûlait jusqu'à la racine du mal. Cependant, plus les blessures sont graves, plus Lyca doit concentrer son énergie pour les soigner, jusqu'à en être épuisée.
             </article>
 
             <article class="skills-item purification-ardente">
-                <strong>Purification Ardente :</strong> Lorsque Lyca se trouve acculée, elle peut faire appel à une ultime ressource, invoquant toutes les forces du feu pour se purifier complètement. Son corps s'embrase alors d'une lueur aveuglante, consumant poisons et maladies dans une brûlante conflagration. Ceux qui ont eu le malheur d'être à proximité racontent avoir vu ses yeux briller d'une lueur surnaturelle, tandis que des gerbes de flammes jaillissaient de chacun de ses pores. Cependant, cette technique draconique inflige de graves dommages à son enveloppe charnelle, la laissant vulnérable et épuisée après son activation.            </article>
+                <strong>Purification Ardente :</strong> Lorsque Lyca se trouve acculée, elle peut faire appel à une ultime ressource, invoquant toutes les forces du feu pour se purifier complètement. Son corps s'embrase alors d'une lueur aveuglante, consumant poisons et maladies dans une brûlante conflagration. Ceux qui ont eu le malheur d'être à proximité racontent avoir vu ses yeux briller d'une lueur surnaturelle, tandis que des gerbes de flammes jaillissaient de chacun de ses pores. Cependant, cette technique draconique inflige de graves dommages à son enveloppe charnelle, la laissant vulnérable et épuisée après son activation.
+            </article>
 
             <article class="skills-item passif">
-                    <strong>Style de combat : Reed est spécialisée dans l'art du duel et de l'assassinat, disciplines qui requièrent à la fois maîtrise et précision. Après tant d'année, elle est devenue redoutable dans les combats rapprochés, sa force physique lui permettant d'affronter des adversaires plus imposants qu'elle. Agile et silencieuse, elle se déplace avec une grande discrétion , presque fantomatique. Elle a une grande capacité à frapper dans les zones léthales sachant frapper ou, et à quelle puissance pour provoquer les douleurs voulus, c'est une stratège qui sait attendre le moment parfait pour frapper</strong> 
+                <strong>Style de combat : Reed est spécialisée dans l'art du duel et de l'assassinat, disciplines qui requièrent à la fois maîtrise et précision. Après tant d'année, elle est devenue redoutable dans les combats rapprochés, sa force physique lui permettant d'affronter des adversaires plus imposants qu'elle. Agile et silencieuse, elle se déplace avec une grande discrétion , presque fantomatique. Elle a une grande capacité à frapper dans les zones léthales sachant frapper ou, et à quelle puissance pour provoquer les douleurs voulus, c'est une stratège qui sait attendre le moment parfait pour frapper</strong> 
             </article>
-        
-            
-
         </div>
-        
     </div>
     <div>
         <img src="lyca.jpg" alt="Image du personnage" class="character-image">
-        <!--<img src="flamme.png" alt="feu" class="fire">-->
         <img src="fire.jpg" alt="feu" class="fire">
         <img src="chad.jpg" alt="feu" class="fire">
-        <!--<img src="uwu.jpg" alt="bomms" class="fire">-->
-        
     </div>
-    
-    
-    
 </div>
 
-<div class="button-container">
-    <a href="personnalite.html">
-        <button class="styled-button">Personnalité</button>
-    </a>
-    <a href="histoire.html">
-        <button class="styled-button">Histoire</button>
-    </a>
-</div>
 </body>
 </html>
