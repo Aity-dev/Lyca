@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musique et Contrôle</title>
+    <title>Physique et Personnalité Lyca</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <style>
         body {
             background-color: #1a1a1a;
@@ -12,7 +17,7 @@
             margin: 0;
             padding: 0;
         }
-         /* Navigation buttons styling */
+        
          .nav-buttons {
             display: flex;
             justify-content: center;
@@ -63,7 +68,7 @@
             left: 100%;
         }
 
-        /* Nouveaux styles pour les contrôles audio du premier document */
+
         .controls {
             position: fixed;
             top: 20px;
@@ -159,48 +164,47 @@
             color: #ff4500;
         }
 
-        /* Ajout d'une police élégante via Google Fonts */
+ 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
 
-        /* Ajustement de la section Physique */
+
         .physique {
-            margin: 50px auto; /* Centre la section avec des marges égales en haut et en bas */
+            margin: 50px auto; 
             padding: 20px;
-            background-color: #000000; /* Fond noir */
-            border: 3px solid #ff0000; /* Contour rouge */
+            background-color: #000000; 
+            border: 3px solid #ff0000; 
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre discrète */
-            width: 90%; /* Prend 90% de la largeur de la page pour un espace de chaque côté */
-            box-sizing: border-box; /* Assure que le padding et le bord ne dépassent pas la largeur */
-            font-weight: bold; /* Met tout le texte en gras */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%; 
+            box-sizing: border-box; 
+            font-weight: bold; 
         }
 
-        /* Style du titre */
+ 
         .physique h2 {
-            font-size: 32px; /* Taille du titre */
-            color: #ffffff; /* Couleur du titre en blanc */
+            font-size: 32px; 
+            color: #ffffff; 
             margin-bottom: 15px;
-            text-align: center; /* Titre centré */
-            font-family: 'Cinzel', serif; /* Police élégante */
-            font-weight: 600; /* Gras pour le titre */
+            text-align: center; 
+            font-family: 'Cinzel', serif;
+            font-weight: 600; 
         }
 
-        /* Style du texte */
         .physique p {
             font-size: 19px;
             line-height: 1.4;
-            color: #ddd; /* Couleur claire pour le texte */
-            text-align: justify; /* Justifier le texte */
-            font-family: 'Cinzel', serif; /* Police élégante pour le texte */
+            color: #ddd; 
+            text-align: justify; 
+            font-family: 'Cinzel', serif; 
         }
 
-        /* Mise en valeur d'éléments spécifiques dans le texte */
+
         .physique p span {
-            color: #ff4500; /* Mettre en valeur avec une couleur feu */
+            color: #ff4500; 
         }
 
-        /* Style amélioré pour les images */
+
         .image-container {
             display: flex;
             justify-content: center;
@@ -211,7 +215,7 @@
         }
 
         .image-container img {
-            width: 47%; /* Taille plus grande que la version précédente */
+            width: 47%; 
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
@@ -228,29 +232,29 @@
 </head>
 <body>
     <body>
-        <!-- Navigation Buttons -->
+
         <div class="nav-buttons">
             <a href="index.html" class="nav-button">Identité</a>
             <a href="histoire.html" class="nav-button">Histoire</a>
         </div>
     </body>
-    <!-- Musique -->
+  
     <audio id="background-music" autoplay loop>
         <source src="What The Firelight Casts Theme - AKVN.mp4" type="audio/mpeg">
         Votre navigateur ne supporte pas l'audio.
     </audio>
 
-    <!-- Nouveaux contrôles audio du premier document -->
+    
     <div class="controls">
         <button id="play-pause-btn" onclick="togglePlayPause()">⏸️</button>
         <div class="volume-container">
             <span class="volume-icon">🔊</span>
-            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="updateVolume(this.value)">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2" oninput="updateVolume(this.value)">
         </div>
         <div class="music-title">What The Firelight Casts</div>
     </div>
 
-    <!-- Section Physique -->
+
     <div class="physique">
         <h2>╭───༺☆༻ Description Physique ༺☆༻───╮</h2>
         <p>
@@ -266,7 +270,7 @@
         </p>
     </div>
 
-    <!-- Image en dessous de la section Physique -->
+   
     <div class="image-container">
         <img src="uwu.jpg" alt="Image de Lyca" />
         <img src="fleur.jpg" alt="Image de Lyca" />
@@ -291,22 +295,22 @@
         const volumeSlider = document.getElementById('volume-slider');
         const volumeIcon = document.querySelector('.volume-icon');
 
-        // Fonction pour basculer entre lecture et pause
+       
         function togglePlayPause() {
             if (audio.paused) {
                 audio.play();
-                playPauseBtn.textContent = "⏸️"; // Icône pause
+                playPauseBtn.textContent = "⏸️"; 
             } else {
                 audio.pause();
-                playPauseBtn.textContent = "▶️"; // Icône lecture
+                playPauseBtn.textContent = "▶️"; 
             }
         }
 
-        // Fonction pour ajuster le volume
+     
         function updateVolume(volume) {
             audio.volume = volume;
             
-            // Mise à jour de l'icône de volume
+         
             if (volume >= 0.6) {
                 volumeIcon.textContent = "🔊";
             } else if (volume >= 0.2) {
@@ -318,7 +322,7 @@
             }
         }
 
-        // Initialisation du volume à 50% au chargement
+       
         audio.volume = volumeSlider.value;
         updateVolume(volumeSlider.value);
     </script>
