@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Sœurs Vicop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        /* Container principal split */
+        .split-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Côté gauche - Lyca */
+        .left-side {
+            width: 50%;
+            background: linear-gradient(135deg, 
+                rgba(255, 140, 0, 0.2) 0%,
+                rgba(255, 69, 0, 0.15) 30%,
+                rgba(220, 20, 60, 0.2) 70%,
+                rgba(139, 0, 0, 0.3) 100%),
+                url('lyca_test.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            overflow: hidden;
+        }
+
+        /* Côté droit - Ivy */
+        .right-side {
+            width: 50%;
+            background: linear-gradient(135deg, 
+                rgba(75, 0, 130, 0.2) 0%,
+                rgba(138, 43, 226, 0.15) 30%,
+                rgba(72, 61, 139, 0.2) 70%,
+                rgba(25, 25, 112, 0.3) 100%),
+                url('ivy.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            overflow: hidden;
+        }
+
+        /* Effets de particules */
+        .left-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ff4444, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ff6600, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffaa00, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ff2200, transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: sparkleLeft 4s linear infinite;
+            opacity: 0.15;
+        }
+
+        .right-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #9370db, transparent),
+                radial-gradient(2px 2px at 40px 70px, #8a2be2, transparent),
+                radial-gradient(1px 1px at 90px 40px, #dda0dd, transparent),
+                radial-gradient(1px 1px at 130px 80px, #9932cc, transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: sparkleRight 4s linear infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes sparkleLeft {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        @keyframes sparkleRight {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(-360deg); }
+        }
+
+        /* Effets hover */
+        .left-side:hover {
+            width: 60%;
+            filter: brightness(1.2);
+            box-shadow: inset 20px 0 50px rgba(138, 43, 226, 0.4);
+        }
+
+        .right-side:hover {
+            width: 60%;
+            filter: brightness(1.2);
+            box-shadow: inset -20px 0 50px rgba(255, 69, 0, 0.4);
+        }
+
+        .left-side:hover + .right-side {
+            width: 40%;
+            filter: brightness(0.7);
+        }
+
+        .right-side:hover {
+            width: 60%;
+        }
+
+        .split-container:has(.right-side:hover) .left-side {
+            width: 40%;
+            filter: brightness(0.7);
+        }
+
+        /* Contenu des côtés */
+        .side-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            transition: all 0.6s ease;
+        }
+
+        .character-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .left-side .character-name {
+            color: #ffd700;
+            text-shadow: 
+                0 0 20px #ff4500,
+                0 0 40px #ff6600,
+                0 0 60px #ff4500,
+                3px 3px 15px rgba(0, 0, 0, 0.8);
+            animation: glowOrange 3s ease-in-out infinite alternate;
+        }
+
+        .right-side .character-name {
+            color: #dda0dd;
+            text-shadow: 
+                0 0 20px #9370db,
+                0 0 40px #8a2be2,
+                0 0 60px #9370db,
+                3px 3px 15px rgba(0, 0, 0, 0.8);
+            animation: glowPurple 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPurple {
+            0% { text-shadow: 0 0 20px #9370db, 0 0 40px #8a2be2, 0 0 60px #9370db, 3px 3px 15px rgba(0, 0, 0, 0.8); }
+            100% { text-shadow: 0 0 30px #9370db, 0 0 60px #8a2be2, 0 0 90px #9370db, 3px 3px 20px rgba(0, 0, 0, 0.9); }
+        }
+
+        @keyframes glowOrange {
+            0% { text-shadow: 0 0 20px #ff4500, 0 0 40px #ff6600, 0 0 60px #ff4500, 3px 3px 15px rgba(0, 0, 0, 0.8); }
+            100% { text-shadow: 0 0 30px #ff4500, 0 0 60px #ff6600, 0 0 90px #ff4500, 3px 3px 20px rgba(0, 0, 0, 0.9); }
+        }
+
+        .character-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .left-side .character-title {
+            color: #ffe4b5;
+            text-shadow: 2px 2px 8px rgba(139, 0, 0, 0.8);
+        }
+
+        .right-side .character-title {
+            color: #e6e6fa;
+            text-shadow: 2px 2px 8px rgba(75, 0, 130, 0.8);
+        }
+
+        .enter-button {
+            display: none;
+        }
+
+        .left-side .enter-button {
+            color: #ffd700;
+            border-color: #ff4500;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+        }
+
+        .right-side .enter-button {
+            color: #dda0dd;
+            border-color: #9370db;
+            box-shadow: 0 0 20px rgba(147, 112, 219, 0.4);
+        }
+
+        .left-side .enter-button:hover {
+            background: rgba(255, 69, 0, 0.2);
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        .right-side .enter-button:hover {
+            background: rgba(147, 112, 219, 0.2);
+            box-shadow: 0 0 40px rgba(147, 112, 219, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Citation philosophique centrale */
+        .family-name {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, 
+                #ffd700 0%, 
+                #ff6600 25%, 
+                #ffffff 50%, 
+                #9370db 75%, 
+                #8a2be2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            z-index: 20;
+            animation: gradientShift 4s ease-in-out infinite alternate;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        @keyframes gradientShift {
+            0% { 
+                background: linear-gradient(90deg, 
+                    #ffd700 0%, 
+                    #ff6600 25%, 
+                    #ffffff 50%, 
+                    #9370db 75%, 
+                    #8a2be2 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+            }
+            100% { 
+                background: linear-gradient(90deg, 
+                    #ff4500 0%, 
+                    #ffd700 25%, 
+                    #ffffff 50%, 
+                    #dda0dd 75%, 
+                    #9370db 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+            }
+        }
+
+        /* Ligne de séparation */
+        .divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(147, 112, 219, 0.8) 0%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(255, 69, 0, 0.8) 100%);
+            transform: translateX(-50%);
+            z-index: 15;
+            animation: dividerPulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes dividerPulse {
+            0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .character-name {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            
+            .family-name {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                top: 5%;
+            }
+            
+            .character-title {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+            
+            .enter-button {
+                font-size: 1rem;
+                padding: 12px 30px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <!-- Citation philosophique centrale -->
+        <div class="family-name">"Dans l'ombre de l'une vit l'écho de l'autre"</div>
+        
+        <!-- Ligne de séparation -->
+        <div class="divider"></div>
+        
+        <!-- Côté gauche - Lyca -->
+        <div class="left-side" onclick="goToLyca()">
+            <div class="side-content">
+                <h1 class="character-name">Lyca Vicop</h1>
+                <p class="character-title">L'Âme Vivante</p>
+            </div>
+        </div>
+        
+        <!-- Côté droit - Ivy -->
+        <div class="right-side" onclick="goToIvy()">
+            <div class="side-content">
+                <h1 class="character-name">Ivy Vicop</h1>
+                <p class="character-title">L'Âme Errante</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToLyca() {
+            // Effet de transition
+            document.querySelector('.left-side').style.transform = 'scale(1.1)';
+            document.querySelector('.right-side').style.opacity = '0.3';
+            
+            setTimeout(() => {
+                // Redirection vers la page de Lyca
+                window.location.href = 'lyca.html';
+            }, 500);
+        }
+
+        function goToIvy() {
+            // Effet de transition
+            document.querySelector('.right-side').style.transform = 'scale(1.1)';
+            document.querySelector('.left-side').style.opacity = '0.3';
+            
+            setTimeout(() => {
+                // Redirection vers la page d'Ivy
+                window.location.href = 'ivy.html';
+            }, 500);
+        }
+
+        // Effet de parallaxe subtil au mouvement de la souris
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const leftSide = document.querySelector('.left-side');
+            const rightSide = document.querySelector('.right-side');
+            
+            leftSide.style.transform = `perspective(1000px) rotateY(${(mouseX - 0.5) * 2}deg) rotateX(${(mouseY - 0.5) * -1}deg)`;
+            rightSide.style.transform = `perspective(1000px) rotateY(${(mouseX - 0.5) * -2}deg) rotateX(${(mouseY - 0.5) * 1}deg)`;
+        });
+
+        // Animation d'entrée
+        window.addEventListener('load', function() {
+            document.querySelector('.left-side').style.transform = 'translateX(-100%)';
+            document.querySelector('.right-side').style.transform = 'translateX(100%)';
+            
+            setTimeout(() => {
+                document.querySelector('.left-side').style.transform = 'translateX(0)';
+                document.querySelector('.right-side').style.transform = 'translateX(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

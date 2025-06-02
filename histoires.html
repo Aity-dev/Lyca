@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire de Lyca</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icone/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icone/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icone/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&family=Creepster&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Histoire de Lyca" />
+    <meta property="og:description" content="L'épique saga de Lyca Vicop..." />
+    <meta property="og:image" content="https://aity-dev.github.io/Lyca/lyca.jpg" />
+    <meta property="og:url" content="https://aity-dev.github.io/Lyca/histoire.html" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 30%, #2a0505 70%, #000000 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        /* Particules de feu animées en arrière-plan */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(3px 3px at 25px 35px, #ff2200, transparent),
+                radial-gradient(2px 2px at 45px 75px, #ff4400, transparent),
+                radial-gradient(1px 1px at 95px 45px, #ff6600, transparent),
+                radial-gradient(2px 2px at 135px 85px, #ff8800, transparent),
+                radial-gradient(1px 1px at 165px 35px, #ffaa00, transparent),
+                radial-gradient(2px 2px at 195px 75px, #ff2200, transparent);
+            background-repeat: repeat;
+            background-size: 250px 120px;
+            animation: sparkleFlow 6s linear infinite;
+            opacity: 0.12;
+            z-index: -2;
+        }
+
+        @keyframes sparkleFlow {
+            from { transform: translateY(0px) rotate(0deg); }
+            to { transform: translateY(-120px) rotate(5deg); }
+        }
+
+        /* Overlay dramatique */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(139,0,0,0.1) 0%, rgba(0,0,0,0.3) 70%);
+            z-index: -1;
+            animation: overlayPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes overlayPulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Header épique pour la page histoire */
+        .story-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, 
+                rgba(139,0,0,0.4) 0%, 
+                rgba(255,69,0,0.3) 30%,
+                rgba(139,0,0,0.4) 70%,
+                rgba(0,0,0,0.6) 100%);
+            border-bottom: 4px solid #ff4444;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.1) 0%, 
+                rgba(255, 165, 0, 0.15) 25%,
+                rgba(255, 0, 0, 0.1) 50%,
+                rgba(255, 165, 0, 0.15) 75%,
+                rgba(255, 0, 0, 0.1) 100%);
+            animation: headerShimmer 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes headerShimmer {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .story-title {
+            font-size: 56px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 
+                0 0 15px #ff0000,
+                0 0 30px #ff4444,
+                0 0 45px #ff0000,
+                3px 3px 15px rgba(0,0,0,0.9);
+            animation: epicTitlePulse 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(45deg, #ffffff, #ff4444, #ffffff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: epicTitlePulse 3s ease-in-out infinite alternate, titleGradient 4s ease-in-out infinite;
+        }
+
+        @keyframes epicTitlePulse {
+            0% { 
+                text-shadow: 
+                    0 0 15px #ff0000,
+                    0 0 30px #ff4444,
+                    0 0 45px #ff0000,
+                    3px 3px 15px rgba(0,0,0,0.9);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px #ff0000,
+                    0 0 50px #ff4444,
+                    0 0 75px #ff0000,
+                    3px 3px 20px rgba(0,0,0,1);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes titleGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .story-subtitle {
+            font-size: 24px;
+            font-family: 'Cinzel', serif;
+            font-style: italic;
+            margin-top: 20px;
+            color: #ffaa00;
+            text-shadow: 0 0 20px #ff6600;
+            position: relative;
+            z-index: 1;
+            animation: subtitleFloat 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtitleFloat {
+            0% { transform: translateY(0px); opacity: 0.8; }
+            100% { transform: translateY(-5px); opacity: 1; }
+        }
+
+        /* Navigation améliorée */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+            gap: 60px;
+            z-index: 5;
+            position: relative;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #8b0000, #ff4500, #8b0000);
+            background-size: 300% 300%;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 20px 40px;
+            font-size: 22px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            letter-spacing: 3px;
+            cursor: pointer;
+            box-shadow: 
+                0 10px 30px rgba(255, 68, 68, 0.5),
+                inset 0 0 25px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.8s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            border: 3px solid transparent;
+            animation: navButtonGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes navButtonGlow {
+            0% { 
+                border-color: rgba(255, 68, 68, 0.6);
+                background-position: 0% 50%;
+            }
+            100% { 
+                border-color: rgba(255, 165, 0, 0.9);
+                background-position: 100% 50%;
+            }
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-10px) scale(1.08);
+            box-shadow: 
+                0 20px 50px rgba(255, 68, 68, 0.8),
+                inset 0 0 35px rgba(255, 255, 255, 0.2);
+            background-position: 100% 50%;
+            border-color: #ffaa00;
+        }
+        
+        .nav-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: 1s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        /* Sections d'histoire avec thèmes différents */
+        .story-section {
+            margin: 60px auto;
+            padding: 50px;
+            background: linear-gradient(135deg, 
+                rgba(26, 5, 5, 0.95) 0%, 
+                rgba(51, 17, 17, 0.9) 50%, 
+                rgba(26, 5, 5, 0.95) 100%);
+            border: 4px solid rgba(255, 68, 68, 0.7);
+            border-radius: 30px;
+            box-shadow: 
+                0 20px 50px rgba(255, 0, 0, 0.4),
+                inset 0 0 40px rgba(255, 68, 68, 0.15);
+            width: 92%;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.8s ease;
+        }
+
+        /* Variations thématiques pour chaque section */
+        .story-section.childhood {
+            border-color: rgba(255, 215, 0, 0.7);
+            background: linear-gradient(135deg, 
+                rgba(26, 15, 5, 0.95) 0%, 
+                rgba(51, 37, 17, 0.9) 50%, 
+                rgba(26, 15, 5, 0.95) 100%);
+        }
+
+        .story-section.tragedy {
+            border-color: rgba(139, 0, 0, 0.9);
+            background: linear-gradient(135deg, 
+                rgba(26, 5, 5, 0.98) 0%, 
+                rgba(51, 17, 17, 0.95) 50%, 
+                rgba(26, 5, 5, 0.98) 100%);
+            animation: tragedyPulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes tragedyPulse {
+            0% { 
+                box-shadow: 
+                    0 20px 50px rgba(139, 0, 0, 0.6),
+                    inset 0 0 40px rgba(139, 0, 0, 0.2);
+            }
+            100% { 
+                box-shadow: 
+                    0 30px 70px rgba(139, 0, 0, 0.8),
+                    inset 0 0 60px rgba(139, 0, 0, 0.3);
+            }
+        }
+
+        .story-section.redemption {
+            border-color: rgba(138, 43, 226, 0.7);
+            background: linear-gradient(135deg, 
+                rgba(15, 5, 26, 0.95) 0%, 
+                rgba(30, 17, 51, 0.9) 50%, 
+                rgba(15, 5, 26, 0.95) 100%);
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.08) 0%, 
+                rgba(255, 165, 0, 0.08) 50%, 
+                rgba(255, 0, 0, 0.08) 100%);
+            z-index: -1;
+            animation: sectionGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes sectionGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .story-section:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 165, 0, 0.9);
+            box-shadow: 
+                0 35px 80px rgba(255, 0, 0, 0.5),
+                inset 0 0 50px rgba(255, 68, 68, 0.25);
+        }
+
+        .story-section h2 {
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 35px;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 0 20px #ff4444,
+                0 0 40px #ff0000,
+                3px 3px 10px rgba(0, 0, 0, 0.9);
+            animation: sectionTitleShimmer 4s ease-in-out infinite alternate;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        @keyframes sectionTitleShimmer {
+            0% { 
+                text-shadow: 
+                    0 0 20px #ff4444,
+                    0 0 40px #ff0000,
+                    3px 3px 10px rgba(0, 0, 0, 0.9);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 30px #ff6600,
+                    0 0 60px #ffaa00,
+                    3px 3px 15px rgba(0, 0, 0, 1);
+            }
+        }
+
+        .story-section h2::before,
+        .story-section h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #ff4444, #ffaa00, #ff4444, transparent);
+            transform: translateY(-50%);
+            animation: decorPulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes decorPulse {
+            0% { opacity: 0.6; width: 120px; }
+            100% { opacity: 1; width: 140px; }
+        }
+
+        .story-section h2::before {
+            left: -160px;
+        }
+
+        .story-section h2::after {
+            right: -160px;
+        }
+
+        .story-section p {
+            font-size: 19px;
+            line-height: 1.9;
+            color: #ffffff;
+            text-align: justify;
+            font-family: 'Cinzel', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 1;
+            text-indent: 30px;
+        }
+
+        .story-section p span {
+            color: #ff4500;
+            font-weight: 600;
+            text-shadow: 0 0 15px #ff4500;
+        }
+
+        /* Images avec effets dramatiques */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 70px auto;
+            width: 92%;
+            position: relative;
+        }
+
+        .image-container.single {
+            justify-content: center;
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.15) 0%, 
+                rgba(255, 165, 0, 0.15) 50%, 
+                rgba(255, 0, 0, 0.15) 100%);
+            border-radius: 40px;
+            z-index: -1;
+            animation: containerDramaticGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerDramaticGlow {
+            0% { 
+                opacity: 0.4; 
+                transform: scale(1);
+                filter: blur(5px);
+            }
+            100% { 
+                opacity: 0.8; 
+                transform: scale(1.02);
+                filter: blur(8px);
+            }
+        }
+
+        .image-container img {
+            max-width: 45%;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 40px rgba(255, 0, 0, 0.5),
+                0 0 30px rgba(255, 68, 68, 0.4);
+            border: 4px solid rgba(255, 68, 68, 0.7);
+            transition: all 0.8s ease;
+            filter: brightness(1.1) contrast(1.2) saturate(1.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container.single img {
+            max-width: 60%;
+        }
+
+        .image-container img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 1s;
+        }
+
+        .image-container img:hover::before {
+            left: 100%;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 
+                0 25px 60px rgba(255, 0, 0, 0.7),
+                0 0 50px rgba(255, 68, 68, 0.6);
+            border-color: rgba(255, 165, 0, 0.9);
+            filter: brightness(1.15) contrast(1.15) saturate(1.2);
+        }
+
+        /* Effets spéciaux pour images spécifiques */
+        .image-container img[src*="die"] {
+            filter: brightness(0.8) contrast(1.4) saturate(0.8) sepia(0.3);
+            border-color: rgba(139, 0, 0, 0.9);
+        }
+
+        .image-container img[src*="die"]:hover {
+            filter: brightness(1.05) contrast(1.3) saturate(1.1) sepia(0.4);
+            animation: tragedyShake 0.5s ease-in-out;
+        }
+
+        @keyframes tragedyShake {
+            0%, 100% { transform: scale(1.08) rotate(2deg); }
+            25% { transform: scale(1.08) rotate(-1deg); }
+            75% { transform: scale(1.08) rotate(1deg); }
+        }
+
+        /* Séparateur épique */
+        .epic-separator {
+            width: 80%;
+            height: 8px;
+            background: linear-gradient(to right, 
+                rgba(255, 0, 0, 0) 0%,
+                rgba(255, 0, 0, 0.8) 10%,
+                rgba(255, 165, 0, 1) 25%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 165, 0, 1) 75%,
+                rgba(255, 0, 0, 0.8) 90%,
+                rgba(255, 0, 0, 0) 100%);
+            margin: 80px auto;
+            border-radius: 4px;
+            box-shadow: 
+                0 0 30px rgba(255, 165, 0, 0.6),
+                0 0 60px rgba(255, 0, 0, 0.3);
+            animation: epicSeparatorPulse 3s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        @keyframes epicSeparatorPulse {
+            0% { 
+                opacity: 0.8; 
+                transform: scaleX(1);
+                box-shadow: 
+                    0 0 30px rgba(255, 165, 0, 0.6),
+                    0 0 60px rgba(255, 0, 0, 0.3);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scaleX(1.05);
+                box-shadow: 
+                    0 0 50px rgba(255, 165, 0, 0.8),
+                    0 0 100px rgba(255, 0, 0, 0.5);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .image-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .image-container img,
+            .image-container.single img {
+                max-width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-title {
+                font-size: 36px;
+                letter-spacing: 3px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .story-section {
+                margin: 40px auto;
+                padding: 30px 20px;
+                width: 95%;
+            }
+            
+            .story-section h2 {
+                font-size: 28px;
+            }
+            
+            .story-section h2::before,
+            .story-section h2::after {
+                display: none;
+            }
+            
+            .image-container img,
+            .image-container.single img {
+                max-width: 90%;
+            }
+        }
+
+        /* Animation d'entrée pour les sections */
+        .story-section {
+            opacity: 0;
+            transform: translateY(100px);
+            animation: sectionEntrance 1s ease-out forwards;
+        }
+
+        @keyframes sectionEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .story-section:nth-child(1) { animation-delay: 0.2s; }
+        .story-section:nth-child(2) { animation-delay: 0.4s; }
+        .story-section:nth-child(3) { animation-delay: 0.6s; }
+        .story-section:nth-child(4) { animation-delay: 0.8s; }
+        .story-section:nth-child(5) { animation-delay: 1s; }
+        .story-section:nth-child(6) { animation-delay: 1.2s; }
+    </style>
+</head>
+<body>
+    <!-- Header épique -->
+    <div class="story-header">
+        <h1 class="story-title">L'Épopée de Lyca</h1>
+        <p class="story-subtitle">Une Saga de Feu, de Sang et de Rédemption</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+        <a href="index.html" class="nav-button">Identité</a>
+        <a href="personnalite.html" class="nav-button">Personnalité/Physique</a>
+    </div>
+
+    <!-- Section 1: Début de l'Histoire -->
+    <div class="story-section childhood">
+        <h2>╭───༺☆༻ Début de l'Histoire ༺☆༻───╮</h2>
+        <p>
+            Lyca est née il y a plus de 450 ans, dernier fruit de l'union entre Cynth la mère et Lwon le père, un couple de dragons puissants. Elle grandit entourée de son grand frère et de sa grande sœur, Mae, au sein d'une famille unie qui vivait à l'abri des regards, loin des civilisations. Comme la plupart des dragons, ils préféraient rester entre eux, évitant les autres races qui les considèrent soit comme des menaces, soit comme des trésors vivants à capturer. Leur espèce, à la fois rare et redoutable, nourrissait d'innombrables convoitises.<br><br>
+
+            Pendant cent vingt-neuf années humaines — l'équivalent de sept ans pour les dragons — Lyca connut une enfance paisible, bercée par la chaleur de sa famille. Chasser, jouer, s'entraîner et se battre faisaient partie de leur quotidien, renforçant les liens qui unissaient les trois frères et sœurs. Mae, l'aînée, incarnait la grande sœur parfaite, guidant Lyca dans son entraînement et apprentissage, tandis que leur frère, plus téméraire, cherchait toujours à prouver sa valeur. Lyca, quant à elle, admirait ses aînés et rêvait du jour où elle serait assez forte pour leur tenir tête.<br><br>
+            
+            Ils n'avaient pas conscience du monde extérieur, ni du fait que leur existence même représentait un trésor inestimable pour les armées en quête de pouvoir.
+        </p>
+    </div>
+
+    <!-- Images famille -->
+    <div class="image-container">
+        <img src="Mae.jpg" alt="Lyca et sa soeur Mae" />
+        <img src="mere.jpg" alt="Lyca et sa famille" />
+    </div>
+
+    <div class="epic-separator"></div>
+
+    <!-- Section 2: Le Massacre -->
+    <div class="story-section tragedy">
+        <h2>╭───༺☆༻ Le Massacre sous la Lune d'Hiver ༺☆༻───╮</h2>
+        <p>
+            La nuit était glaciale, figée sous une lune pâle qui baignait la neige. À l'intérieur de leur tanière, Lyca dormait paisiblement, blottie contre le flanc de sa mère, bercée par la profonde respiration de sa famille.<br><br>
+
+            Dehors, plusieurs silhouettes s'approchaient lentement, avançant avec une prudence calculée. Leurs pas étaient presque imperceptibles sur la neige, mais malgré leur discrétion, leur présence n'échappa pas aux sens des deux parents qui s'en allèrent monter la garde la seconde qui suivit.<br><br>
+
+            Lwon et Cynthe, déjà alertés par une sensation oppressante, s'étaient levés bien avant l'assaut. Ils n'avaient pas réveillé leurs enfants, mais leurs instincts leur murmuraient que cette nuit ne serait pas ordinaire. Silencieux, ils avaient quitté la chaleur de la grotte pour se poster à l'entrée, leurs armes fermement maintenues dans leurs serres. Droits et imposants, ils se tenaient tels des gardes impériaux, figés dans l'attente.<br><br>
+
+            Puis, un sifflement strident fendit l'air.<br><br>
+
+            Une volée de flèches noircit le ciel nocturne avant de fondre sur eux à une vitesse fulgurante. Pourtant, aucune trace des assaillants. Cachés derrière une colline non loin de là, leurs auteurs demeuraient invisibles, frappant depuis l'ombre avec la lâcheté de ceux qui n'osent affronter leur proie à découvert.<br><br>
+
+            Le combat s'intensifia rapidement. Lwon et Cynth, malgré leur puissance légendaire, furent progressivement submergés par le nombre. Mae, voyant la situation désespérée, prit Lyca dans ses bras et tenta de fuir... mais une flèche empoisonnée la transperça, la condamnant à s'effondrer dans la neige froide sous les yeux horrifiés de sa petite sœur.<br><br>
+
+            Cette nuit-là, Lyca perdit tout. Sa famille, son foyer, son innocence. Elle ne fut plus jamais la même.
+        </p>
+    </div>
+
+    <!-- Image tragédie -->
+    <div class="image-container single">
+        <img src="die.png" alt="La tragédie" />
+    </div>
+
+    <div class="epic-separator"></div>
+
+    <!-- Section 3: Les Siècles de Vengeance -->
+    <div class="story-section tragedy">
+        <h2>╭───༺☆༻ Les Siècles de Vengeance ༺☆༻───╮</h2>
+        <p>
+            Des pas lourds écrasant la neige se rapprochaient. Lyca sursauta. Son souffle était court, irrégulier. Son cœur tambourinait dans sa poitrine. Elle ne pouvait pas rester. Elle devait fuir.<br><br>
+
+            D'un geste tremblant, elle s'arracha à la scène. Ses jambes vacillantes la portèrent hors de la plaine, loin des corps, loin du massacre. Loin de sa sœur. Elle courut sans se retourner, s'enfonçant dans la forêt, sans but, sans direction. Juste fuir.<br><br>
+
+            Les arbres devinrent ses seuls compagnons. Elle erra sans savoir où aller, jusqu'à ce que ses forces l'abandonnent. Elle s'effondra au pied d'un arbre, se recroquevilla sur elle-même et attendit. Un jour. Deux jours. Trois jours. Quatre jours.<br><br>
+
+            Toujours immobile, les bras enroulés autour de ses jambes, la tête enfouie, les larmes silencieuses coulant sur ses joues. Elle attendait. Quelqu'un allait revenir, forcément. Maman. Papa. Mae. Son frère. N'importe qui. Même si elle les avait tous vus mourir. Elle refusait d'y croire. Mais personne ne vint.<br><br>
+
+            Son premier meurtre eut lieu trois ans après la tragédie. Un soldat, seul, traversait la forêt. Il marchait tranquillement, ignorant l'ombre tapie dans les hauteurs. Elle le traquait. Elle sauta. Sa lame trancha avant même qu'il ne puisse crier. Un bruit sourd. Un corps sans vie. Et un frisson. Un frisson qu'elle n'avait jamais ressenti auparavant. Elle aurait dû être horrifiée. Mais elle avait adoré ça. Alors elle recommença. Encore et encore. Jusqu'à ce que la solitude devienne sa seule compagne.
+        </p>
+    </div>
+
+    <!-- Images de la solitude -->
+    <div class="image-container">
+        <img src="triste2.jpg" alt="Lyca solitaire" />
+        <img src="triste.jpg" alt="Lyca dans l'ombre" />
+    </div>
+
+    <div class="epic-separator"></div>
+
+    <!-- Section 4: Red Burn -->
+    <div class="story-section tragedy">
+        <h2>╭───༺☆༻ L'Ascension de Red Burn ༺☆༻───╮</h2>
+        <p>
+            Plus de quatre siècles s'étaient écoulés. Quatre cents ans de sang. Quatre cents ans de carnage.<br><br>
+
+            Lyca n'était plus cette enfant recroquevillée sous un arbre, suppliant le retour d'une famille disparue. Elle était devenue une ombre, une légende terrifiante murmurée dans les tavernes, un nom que l'on n'osait prononcer qu'à voix basse. Red Burn. Ou encore... L'Embrasée Silencieuse. La Lame Ardente. Le Fléau des Cendres.<br><br>
+
+            Certains racontaient qu'elle apparaissait au milieu des flammes, surgissant du néant pour abattre ses cibles sans un bruit. D'autres prétendaient que ses yeux brillaient comme des braises prêtes à consumer le monde. Peu importait la version de l'histoire. Le résultat restait le même : une traînée de cadavres derrière elle.<br><br>
+
+            Et désormais, elle était traquée. Des familles en quête de vengeance, cherchant à laver dans le sang l'honneur souillé de leurs défunts. Des chasseurs de primes attirés par la somme colossale promise par la ville d'Arzmania pour sa tête. Des justiciers rêvant d'être celui ou celle qui mettrait fin au mythe de Red Burn.<br><br>
+
+            Ils la pourchassaient sans relâche. Ils la voulaient morte. Mais elle ne leur laisserait pas ce plaisir. Désormais, elle ne pouvait plus marcher librement dans les villes. Les affiches de recherche, portant son nom et son visage, étaient placardées à chaque coin de rue, sur les murs des auberges, dans les bureaux des guildes de mercenaires. Alors, elle se dissimulait. Capuches sombres. Pas feutrés. Identités volées. Elle s'adaptait. Elle survivait.
+        </p>
+    </div>
+
+    <div class="epic-separator"></div>
+
+    <!-- Section 5: La Rencontre avec Asny -->
+    <div class="story-section redemption">
+        <h2>╭───༺☆༻ L'Éveil de l'Humanité ༺☆༻───╮</h2>
+        <p>
+            Quatre siècles de solitude. Quatre cents ans à errer seule, ne parlant à pratiquement personne. Au fil du temps, son cœur s'était alourdi sous le poids du vide. Elle n'avait jamais eu besoin de compagnie... c'est ce qu'elle croyait.<br><br>
+
+            Mais à force de voir des êtres marcher à deux, rire ensemble, combattre côte à côte, elle ressentit une douleur plus insidieuse que n'importe quelle blessure. Une souffrance qu'aucune flamme ne pouvait brûler, qu'aucune lame ne pouvait trancher.<br><br>
+
+            C'est ce jour où, de passage à Rogrok, terre des Magmariens, elle sentit un regard pesant se poser sur elle. Une golem de glace. Elle l'observait en silence. Puis, sans hostilité, elle lui fit signe d'approcher, l'invitant à discuter au centre de l'arène.<br><br>
+
+            Lyca crut d'abord être démasquée. Mais au fil des échanges – malgré ses réponses courtes, froides, presque incompétentes – elle comprit. La golem nommée Asny était aussi une meurtrière. Une âme brisée par la vengeance. Une histoire qui ressemblait à la sienne. Son frère avait été tué. Et elle, depuis, traquait les responsables, avançant seule, consumée par une rage glaciale.<br><br>
+
+            Leur discussion se poursuivit près des bains de lave, là où l'air brûlait, où la pierre rougeoyait sous leurs pas. Puis, elles prirent la route ensemble. Combien de temps dura leur voyage ? Lyca l'ignorait. Elle ne comptait pas les jours. Mais c'était la première fois, depuis des siècles, qu'elle avançait aux côtés de quelqu'un.<br><br>
+
+            Et puis... elles se séparèrent. Leur route prit fin au château, se perdant de vue dans l'immensité du monde. Jusqu'à ce qu'un jour, bien plus tard, leurs chemins se croisent à nouveau. Au sommet d'une montagne. Ce fut la première fois depuis des siècles que Lyca sourit sincèrement. Une joie brève. Éphémère. Car à peine s'étaient-elles retrouvées qu'Asny lui fit une demande qu'elle ne put ignorer. Elle voulait mourir. Dans un duel. Ici, au sommet. Lyca perdit son sourire. Mais elle ne tenta pas de la raisonner. Elle n'essaya pas de comprendre. Elles se ressemblaient trop. Alors... elle accepta.<br><br>
+
+            Moins de dix minutes plus tard, le katana de la golem était planté là où son propriétaire avait péri.
+        </p>
+    </div>
+
+    <div class="epic-separator"></div>
+
+    <!-- Section 6: La Nouvelle Voie -->
+    <div class="story-section redemption">
+        <h2>╭───༺☆༻ Vers une Nouvelle Destinée ༺☆༻───╮</h2>
+        <p>
+            Elle attendit devant sa tombe. Longtemps. Espérant ressentir quelque chose. De la tristesse. Du chagrin. Un vide différent de celui qu'elle portait depuis quatre siècles. Mais il n'y eut rien. Juste un silence pesant, oppressant. Et à ce moment-là... elle crut avoir définitivement perdu son humanité.<br><br>
+
+            Mais au fond... Elle aimait ça, être accompagnée. Sentir une présence à ses côtés. Même si ce n'était pas fait pour elle. Même si elle était persuadée que ce n'était pas sa place. Alors... elle essaierait. Elle essaierait de se forger une nouvelle voie. Vivre en tuant n'avait plus de sens.<br><br>
+
+            Si c'était pour errer éternellement dans la souffrance, dans un monde où elle ne serait à jamais qu'une ombre solitaire... à quoi bon survivre ? Elle aurait pu sombrer. Se laisser consumer par son propre feu. Mais non. Au lieu de ça, elle prit une décision. Une résolution qui n'effaçait pas les siècles de sang derrière elle. Une décision qui ne changerait pas ce qu'elle était devenue. Mais qui lui permettrait d'avancer.<br><br>
+
+            Elle se résigna alors à laisser derrière elle la voie de la vengeance. Pour la première fois depuis plus de quatre cents ans... Mais malgré tout... Il y avait une chose qu'elle ne pourrait jamais abandonner.<br><br>
+
+            Ce frisson au creux de ses entrailles face à un adversaire redoutable. L'exaltation d'un duel où chaque coup pouvait être le dernier. L'adrénaline pure du combat. C'était une part d'elle. Une part qu'elle refusait d'enterrer.<br><br>
+
+            Alors, même en cherchant une nouvelle voie... elle continuerait d'affronter de puissants adversaires. Parce qu'après tout... c'est ce qu'elle aimait le plus.
+        </p>
+    </div>
+
+    <!-- Image finale -->
+    <div class="image-container single">
+        <img src="1000.png" alt="Lyca vers l'avenir" />
+    </div>
+
+    <!-- Séparateur final épique -->
+    <div class="epic-separator"></div>
+
+    <!-- Script pour animations avancées -->
+    <script>
+        // Animation d'entrée progressive des sections
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observer toutes les sections
+        document.querySelectorAll('.story-section').forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+
+        // Effet de parallaxe léger sur les particules
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            document.body.style.backgroundPosition = `0 ${rate}px`;
+        });
+
+        // Animation des titres au survol
+        document.querySelectorAll('.story-section h2').forEach(title => {
+            title.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            title.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Effet de lecture progressive des paragraphes
+        document.querySelectorAll('.story-section p').forEach(paragraph => {
+            paragraph.addEventListener('mouseenter', function() {
+                this.style.textShadow = '3px 3px 8px rgba(255, 68, 68, 0.8)';
+                this.style.transition = 'text-shadow 0.4s ease';
+            });
+            
+            paragraph.addEventListener('mouseleave', function() {
+                this.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.7)';
+            });
+        });
+
+        // Animation de scintillement aléatoire sur les éléments décoratifs
+        setInterval(function() {
+            const elements = document.querySelectorAll('.story-section h2::before, .story-section h2::after');
+            const randomElement = Math.floor(Math.random() * elements.length);
+            // Effet de scintillement sur un élément aléatoire
+        }, 3000);
+
+        // Gestion de l'historique de navigation
+        window.addEventListener('beforeunload', function() {
+            // Sauvegarde de la position de scroll pour une meilleure UX
+            localStorage.setItem('scrollPosition', window.pageYOffset);
+        });
+
+        window.addEventListener('load', function() {
+            // Restauration de la position de scroll
+            const scrollPosition = localStorage.getItem('scrollPosition');
+            if (scrollPosition) {
+                window.scrollTo(0, parseInt(scrollPosition));
+                localStorage.removeItem('scrollPosition');
+            }
+        });
+
+        // Animation de typing pour le titre principal
+        function typeWriter(element, text, speed = 80) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Démarrer l'effet de typing au chargement
+        window.addEventListener('load', function() {
+            const title = document.querySelector('.story-title');
+            const originalText = title.textContent;
+            typeWriter(title, originalText, 120);
+        });
+    </script>
+</body>
+</html>

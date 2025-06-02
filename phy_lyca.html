@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physique et Personnalité Lyca</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icone/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icone/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icone/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Fiche RP de Lyca" />
+    <meta property="og:description" content="Fiche RP de Lyca Vicop..." />
+    <meta property="og:image" content="https://aity-dev.github.io/Lyca/lyca.jpg" />
+    <meta property="og:url" content="https://aity-dev.github.io/Lyca/index.html" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #000000 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        /* Particules de feu en arrière-plan */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ff4444, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ff6600, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffaa00, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ff2200, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ff8800, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 4s linear infinite;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        @keyframes sparkle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-100px); }
+        }
+
+        /* Header minimaliste pour cette page */
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(139,0,0,0.3), rgba(255,69,0,0.2));
+            border-bottom: 3px solid #ff4444;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.1) 0%, 
+                rgba(255, 165, 0, 0.1) 50%, 
+                rgba(255, 0, 0, 0.1) 100%);
+            animation: headerGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes headerGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 0 10px #ff0000,
+                0 0 20px #ff4444,
+                0 0 30px #ff0000,
+                2px 2px 10px rgba(0,0,0,0.8);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-title:hover {
+            transform: scale(1.05);
+            text-shadow: 
+                0 0 20px #ff0000,
+                0 0 40px #ff4444,
+                0 0 60px #ff0000,
+                2px 2px 15px rgba(0,0,0,0.9);
+        }
+
+        @keyframes titlePulse {
+            0% { 
+                text-shadow: 
+                    0 0 10px #ff0000,
+                    0 0 20px #ff4444,
+                    0 0 30px #ff0000,
+                    2px 2px 10px rgba(0,0,0,0.8);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 20px #ff0000,
+                    0 0 40px #ff4444,
+                    0 0 60px #ff0000,
+                    2px 2px 15px rgba(0,0,0,0.9);
+            }
+        }
+
+        /* Navigation buttons améliorée */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+            gap: 40px;
+            z-index: 5;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #8b0000, #ff4500, #8b0000);
+            background-size: 200% 200%;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 18px 35px;
+            font-size: 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 
+                0 8px 25px rgba(255, 68, 68, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            border: 2px solid transparent;
+            animation: buttonGlow 3s ease-in-out infinite alternate;
+        }
+
+        /* Bouton accueil avec style spécial */
+        .nav-button.home-button {
+            background: linear-gradient(135deg, #4b0082, #8a2be2, #4b0082);
+            animation: homeButtonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes homeButtonGlow {
+            0% { border-color: rgba(138, 43, 226, 0.5); }
+            100% { border-color: rgba(186, 85, 211, 0.8); }
+        }
+
+        .nav-button.home-button:hover {
+            background-position: 100% 100%;
+            border-color: #ba55d3;
+            box-shadow: 
+                0 15px 40px rgba(138, 43, 226, 0.7),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes buttonGlow {
+            0% { border-color: rgba(255, 68, 68, 0.5); }
+            100% { border-color: rgba(255, 165, 0, 0.8); }
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(255, 68, 68, 0.7),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+            background-position: 100% 100%;
+            border-color: #ffaa00;
+        }
+        
+        .nav-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.8s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        /* Contrôles audio stylisés */
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, rgba(26, 5, 5, 0.95), rgba(51, 17, 17, 0.9));
+            backdrop-filter: blur(15px);
+            padding: 15px 20px;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(255, 0, 0, 0.4),
+                inset 0 0 20px rgba(255, 68, 68, 0.1);
+            border: 2px solid rgba(255, 68, 68, 0.6);
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .controls:hover {
+            box-shadow: 
+                0 15px 40px rgba(255, 0, 0, 0.6),
+                inset 0 0 30px rgba(255, 68, 68, 0.2);
+            border-color: rgba(255, 165, 0, 0.8);
+            transform: translateY(-2px);
+        }
+
+        #play-pause-btn {
+            background: linear-gradient(135deg, #8b0000, #ff4500);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 5px 15px rgba(255, 0, 0, 0.4),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 68, 68, 0.5);
+        }
+
+        #play-pause-btn:hover {
+            background: linear-gradient(135deg, #ff4500, #8b0000);
+            transform: scale(1.1);
+            box-shadow: 
+                0 8px 25px rgba(255, 0, 0, 0.6),
+                inset 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-icon {
+            color: #ff4500;
+            font-size: 22px;
+            width: 25px;
+            text-shadow: 0 0 10px #ff4500;
+            animation: iconPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes iconPulse {
+            0% { text-shadow: 0 0 10px #ff4500; }
+            100% { text-shadow: 0 0 20px #ff4500, 0 0 30px #ff6600; }
+        }
+
+        input[type="range"] {
+            appearance: none;
+            height: 8px;
+            background: linear-gradient(to right, #ff4500, #ff0000);
+            border-radius: 10px;
+            outline: none;
+            width: 140px;
+            box-shadow: 
+                0 2px 5px rgba(0, 0, 0, 0.4),
+                inset 0 0 10px rgba(255, 68, 68, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #ffffff, #ff4500);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.5),
+                0 0 10px rgba(255, 68, 68, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: linear-gradient(135deg, #ff4500, #ffffff);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(255, 68, 68, 0.6);
+        }
+
+        .music-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #ffffff;
+            margin-left: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .music-title:hover {
+            color: #ff4500;
+            text-shadow: 0 0 10px #ff4500;
+        }
+
+        /* Sections principales */
+        .physique {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, 
+                rgba(26, 5, 5, 0.95) 0%, 
+                rgba(51, 17, 17, 0.9) 50%, 
+                rgba(26, 5, 5, 0.95) 100%);
+            border: 3px solid rgba(255, 68, 68, 0.6);
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 40px rgba(255, 0, 0, 0.3),
+                inset 0 0 30px rgba(255, 68, 68, 0.1);
+            width: 90%;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+
+        .physique::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.05) 0%, 
+                rgba(255, 165, 0, 0.05) 50%, 
+                rgba(255, 0, 0, 0.05) 100%);
+            z-index: -1;
+            animation: sectionGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes sectionGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .physique:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 165, 0, 0.8);
+            box-shadow: 
+                0 25px 60px rgba(255, 0, 0, 0.4),
+                inset 0 0 40px rgba(255, 68, 68, 0.2);
+        }
+
+        .physique h2 {
+            font-size: 38px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 15px #ff4444,
+                0 0 30px #ff0000,
+                2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: titleShimmer 3s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        @keyframes titleShimmer {
+            0% { 
+                text-shadow: 
+                    0 0 15px #ff4444,
+                    0 0 30px #ff0000,
+                    2px 2px 8px rgba(0, 0, 0, 0.8);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px #ff6600,
+                    0 0 50px #ffaa00,
+                    2px 2px 12px rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        .physique h2::before,
+        .physique h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff4444, transparent);
+            transform: translateY(-50%);
+        }
+
+        .physique h2::before {
+            left: -120px;
+        }
+
+        .physique h2::after {
+            right: -120px;
+        }
+
+        .physique p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: justify;
+            font-family: 'Cinzel', serif;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        .physique p span {
+            color: #ff4500;
+            font-weight: 600;
+            text-shadow: 0 0 10px #ff4500;
+        }
+
+        /* Conteneur d'images amélioré */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 50px auto;
+            width: 90%;
+            position: relative;
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, 
+                rgba(255, 0, 0, 0.1) 0%, 
+                rgba(255, 165, 0, 0.1) 50%, 
+                rgba(255, 0, 0, 0.1) 100%);
+            border-radius: 30px;
+            z-index: -1;
+            animation: containerGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .image-container img {
+            width: 47%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(255, 0, 0, 0.4),
+                0 0 20px rgba(255, 68, 68, 0.3);
+            border: 3px solid rgba(255, 68, 68, 0.6);
+            transition: all 0.6s ease;
+            filter: brightness(1.1) contrast(1.1) saturate(1.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.8s;
+        }
+
+        .image-container img:hover::before {
+            left: 100%;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 
+                0 20px 50px rgba(255, 0, 0, 0.6),
+                0 0 40px rgba(255, 68, 68, 0.5);
+            border-color: rgba(255, 165, 0, 0.8);
+            filter: brightness(1.15) contrast(1.15) saturate(1.2);
+        }
+
+        /* Effet de particules sur les images */
+        .image-container img:nth-child(1):hover {
+            animation: imageSparkle1 0.6s ease-in-out;
+        }
+
+        .image-container img:nth-child(2):hover {
+            animation: imageSparkle2 0.6s ease-in-out;
+        }
+
+        @keyframes imageSparkle1 {
+            0%, 100% { filter: brightness(1.1) contrast(1.1) saturate(1.2); }
+            50% { filter: brightness(1.2) contrast(1.2) saturate(1.3) hue-rotate(5deg); }
+        }
+
+        @keyframes imageSparkle2 {
+            0%, 100% { filter: brightness(1.1) contrast(1.1) saturate(1.2); }
+            50% { filter: brightness(1.2) contrast(1.2) saturate(1.3) hue-rotate(-5deg); }
+        }
+
+        /* Séparateur décoratif */
+        .separator {
+            width: 70%;
+            height: 6px;
+            background: linear-gradient(to right, 
+                rgba(255, 0, 0, 0) 0%,
+                rgba(255, 0, 0, 0.8) 20%, 
+                rgba(255, 165, 0, 1) 50%, 
+                rgba(255, 0, 0, 0.8) 80%,
+                rgba(255, 0, 0, 0) 100%);
+            margin: 60px auto;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+            animation: separatorPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes separatorPulse {
+            0% { opacity: 0.7; transform: scaleX(1); }
+            100% { opacity: 1; transform: scaleX(1.02); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .image-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .image-container img {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .physique {
+                margin: 30px auto;
+                padding: 25px;
+                width: 95%;
+            }
+            
+            .physique h2 {
+                font-size: 28px;
+            }
+            
+            .physique h2::before,
+            .physique h2::after {
+                display: none;
+            }
+            
+            .controls {
+                position: relative;
+                margin: 20px auto;
+                width: fit-content;
+            }
+            
+            .image-container img {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header de la page -->
+    <div class="page-header">
+        <h1 class="page-title" onclick="window.location.href='menu.html'">Personnalité & Physique</h1>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+        <a href="menu.html" class="nav-button home-button">🏠 Accueil</a>
+        <a href="lyca.html" class="nav-button">Identité</a>
+        <a href="histoires.html" class="nav-button">Histoire</a>
+    </div>
+
+    <!-- Contrôles audio -->
+    <div class="controls">
+        <button id="play-pause-btn">⏸️</button>
+        <div class="volume-container">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2">
+        </div>
+        <div class="music-title">What The Firelight Casts</div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="background-music" autoplay loop>
+        <source src="What The Firelight Casts Theme - AKVN.mp4" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <!-- Section Description Physique -->
+    <div class="physique">
+        <h2>╭───༺☆༻ Description Physique ༺☆༻───╮</h2>
+        <p>
+            Lyca dégage une présence écrasante, mêlant majesté et danger, comme si son être portait le poids d'un héritage draconique ancien et puissant. Sa peau, d'une pâleur lumineuse, semble capter et refléter la lumière. Ses yeux, d'un vert éclatant et perçant, captivent quiconque ose les croiser.<br><br>
+
+            Sa chevelure dorée, fluide comme une cascade de lumière, descend en vagues soyeuses le long de son dos. Vivante, elle danse au gré de ses mouvements, évoquant des flammes ondoyantes. Bien qu'elle attache souvent ses cheveux avec pragmatisme pour le combat, des mèches indisciplinées encadrent son visage, ajoutant une touche de sauvage élégance à sa beauté raffinée.<br><br>
+
+            Lyca porte sur sa tête une couronne naturelle de cornes draconiques, témoignage de son puissant héritage. Deux grandes cornes principales, légèrement incurvées vers le haut, émergent de chaque côté de son crâne, arborant une texture sombre et lisse, parsemée de reflets rougeoyants rappelant la chaleur des braises. Juste au-dessus de ses oreilles, deux autres cornes plus petites pointent vers l'arrière. Entre ses cornes principales, juste au-dessus de son front, se trouve un bijou finement travaillé fait à partir d'obsidienne, une roche volcanique insensible à la lave. Ce bijou, assorti à ses boucles d'oreilles qui reprennent le même motif losangé.<br><br>
+
+            Ses ailes et sa queue, bien que majestueuses et fonctionnelles, sont des traits "incomplets" de sa lignée. Ces parties de son corps, n'étant pas pleinement ancrées dans sa forme physique, peuvent disparaître et réapparaître à sa guise. Lorsqu'elles se manifestent, ses ailes, vastes et puissantes, s'embrasent de flammes vibrantes qui projettent une chaleur et une lumière dorée dans l'air. Sa queue, robuste et couverte d'écailles luisantes, s'étend avec grâce derrière elle, renforçant son équilibre et sa fluidité martiale. Lorsqu'elle choisit de les dissimuler, elle conserve une allure humaine tout aussi impressionnante, mais son aura de puissance reste indéniable.<br><br>
+
+            Le centre de sa poitrine est marqué par une étoile lumineuse à quatre branches, qui pulse doucement avec une lumière dorée. Plus qu'un simple ornement, cette étoile est une manifestation physique de sa puissance vitale et magique, dont l'intensité fluctue selon son état de santé ou l'énergie qu'elle canalise.
+        </p>
+    </div>
+
+    <!-- Conteneur d'images -->
+    <div class="image-container">
+        <img src="uwu.jpg" alt="Image de Lyca" />
+        <img src="fleur.jpg" alt="Image de Lyca" />
+    </div>
+
+    <!-- Séparateur décoratif -->
+    <div class="separator"></div>
+
+    <!-- Section Description Personnalité -->
+    <div class="physique">
+        <h2>╭───༺☆༻ Description Personnalité ༺☆༻───╮</h2>
+        <p>
+            Lyca est une âme marquée par le combat, façonnée par des siècles de solitude et de duels. Froide et distante, elle ne voyait autrefois en chaque guerrier ou soldat qu'une proie de plus à abattre. Elle n'accorde sa confiance qu'à ceux qu'elle juge dignes de son respect. Son passé de meurtrière n'est pas un fardeau qu'elle porte avec honte, mais plutôt un fardeau qu'elle accepte comme une partie d'elle-même.<br><br>
+
+            Elle évite les grandes villes principalement parce qu'elle recherchée par la plupart d'entre eux et préfère la quiétude de la solitude, s'introduisant dans les cités seulement lorsqu'elle est camouflée, dissimulant sa véritable nature.<br><br>
+
+            Bien qu'isolée depuis des siècles, une infime part d'elle aspire à changer, à renouer avec ce qu'elle a perdu, cherchant maladroitement à être plus sociable, plus humaine. Cependant, son désir constant de se mesurer à de puissants adversaires prend souvent le dessus, et, même lorsqu'elle essaie de se comporter différemment, l'excitation du combat l'obsède, chaque affrontement ravivant sa soif de défi insatiable.<br><br>
+
+            Cruelle et implacable en combat, Lyca n'hésite pas à utiliser toute sa puissance et ses pouvoirs pour anéantir son opposant. Après des siècles à se perfectionner, elle a développé une confiance presque arrogante en ses capacités, persuadée de sa supériorité. Mais, au fond, Lyca n'est ni invincible ni infaillible. Chaque victoire, chaque nouvelle bataille, ajoute une couche de fierté à son caractère mais accentue la solitude dans laquelle elle se trouve piégée.
+        </p>
+    </div>
+
+    <!-- Script JavaScript corrigé -->
+    <script>
+        // Variables globales
+        let audio = null;
+        let playPauseBtn = null;
+        let volumeSlider = null;
+        let volumeIcon = null;
+
+        // Attendre que le DOM soit chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser les éléments
+            audio = document.getElementById('background-music');
+            playPauseBtn = document.getElementById('play-pause-btn');
+            volumeSlider = document.getElementById('volume-slider');
+            volumeIcon = document.querySelector('.volume-icon');
+
+            // Vérifier que tous les éléments existent
+            if (!audio || !playPauseBtn || !volumeSlider || !volumeIcon) {
+                console.error('Certains éléments audio ne sont pas trouvés');
+                return;
+            }
+
+            // Fonction pour basculer play/pause
+            function togglePlayPause() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        playPauseBtn.textContent = "⏸️";
+                    }).catch(e => {
+                        console.log('Erreur de lecture:', e);
+                        document.querySelector('.music-title').textContent = 'Erreur de lecture';
+                    });
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = "▶️";
+                }
+            }
+
+            // Fonction pour mettre à jour le volume
+            function updateVolume(volume) {
+                audio.volume = parseFloat(volume);
+                
+                if (volume >= 0.6) {
+                    volumeIcon.textContent = "🔊";
+                } else if (volume >= 0.2) {
+                    volumeIcon.textContent = "🔉";
+                } else if (volume > 0) {
+                    volumeIcon.textContent = "🔈";
+                } else {
+                    volumeIcon.textContent = "🔇";
+                }
+            }
+
+            // Attacher les événements
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            volumeSlider.addEventListener('input', function() {
+                updateVolume(this.value);
+            });
+
+            // Initialisation du volume
+            audio.volume = parseFloat(volumeSlider.value);
+            updateVolume(volumeSlider.value);
+
+            // Gestion des événements audio
+            audio.addEventListener('loadeddata', function() {
+                playPauseBtn.textContent = audio.paused ? "▶️" : "⏸️";
+                console.log('Audio chargé avec succès');
+            });
+
+            audio.addEventListener('error', function(e) {
+                console.log('Erreur audio:', e);
+                document.querySelector('.music-title').textContent = 'Audio indisponible';
+                playPauseBtn.textContent = "❌";
+                playPauseBtn.disabled = true;
+            });
+
+            audio.addEventListener('play', function() {
+                playPauseBtn.textContent = "⏸️";
+            });
+
+            audio.addEventListener('pause', function() {
+                playPauseBtn.textContent = "▶️";
+            });
+
+            // Gérer l'autoplay qui pourrait être bloqué
+            audio.addEventListener('canplaythrough', function() {
+                if (audio.paused) {
+                    audio.play().catch(e => {
+                        console.log('Autoplay bloqué par le navigateur');
+                        playPauseBtn.textContent = "▶️";
+                    });
+                }
+            });
+
+            // Animation d'entrée pour les sections
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer les sections
+            document.querySelectorAll('.physique').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+
+            // Observer les images
+            document.querySelectorAll('.image-container img').forEach(img => {
+                img.style.opacity = '0';
+                img.style.transform = 'scale(0.8)';
+                img.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(img);
+            });
+
+            // Effet de typing pour les titres
+            function typeWriter(element, text, speed = 50) {
+                let i = 0;
+                element.innerHTML = '';
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            // Démarrer l'effet de typing au chargement
+            const title = document.querySelector('.page-title');
+            if (title) {
+                const originalText = title.textContent;
+                typeWriter(title, originalText, 100);
+            }
+
+            // Effet de survol pour les paragraphes
+            document.querySelectorAll('.physique p').forEach(paragraph => {
+                paragraph.addEventListener('mouseenter', function() {
+                    this.style.textShadow = '2px 2px 8px rgba(255, 68, 68, 0.6)';
+                    this.style.transition = 'text-shadow 0.3s ease';
+                });
+                
+                paragraph.addEventListener('mouseleave', function() {
+                    this.style.textShadow = '1px 1px 3px rgba(0, 0, 0, 0.6)';
+                });
+            });
+
+            // Effet de pulsation sur les contrôles audio
+            setInterval(function() {
+                const controls = document.querySelector('.controls');
+                if (controls) {
+                    controls.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        controls.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            }, 5000);
+
+            console.log('Page entièrement initialisée');
+        });
+
+        // Effet de parallaxe au scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            document.body.style.backgroundPosition = `0 ${rate}px`;
+        });
+    </script>
+</body>
+</html>
