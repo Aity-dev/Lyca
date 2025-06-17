@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physique et Personnalité Ivy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icone/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icone/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icone/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Fiche RP d'Ivy - Physique & Personnalité" />
+    <meta property="og:description" content="Description physique et personnalité d'Ivy Vicop..." />
+    <meta property="og:image" content="https://aity-dev.github.io/Lyca/ivy.jpg" />
+    <meta property="og:url" content="https://aity-dev.github.io/Lyca/phy_ivy.html" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a051a 50%, #000000 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #9370db, transparent),
+                radial-gradient(2px 2px at 40px 70px, #8a2be2, transparent),
+                radial-gradient(1px 1px at 90px 40px, #dda0dd, transparent),
+                radial-gradient(1px 1px at 130px 80px, #9932cc, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ba55d3, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: spectralFloat 6s linear infinite;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        @keyframes spectralFloat {
+            from { transform: translateY(0px) translateX(0px); }
+            to { transform: translateY(-100px) translateX(10px); }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(75,0,130,0.3), rgba(138,43,226,0.2));
+            border-bottom: 3px solid #8a2be2;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(138, 43, 226, 0.1) 0%, 
+                rgba(221, 160, 221, 0.1) 50%, 
+                rgba(138, 43, 226, 0.1) 100%);
+            animation: headerGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes headerGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 0 10px #8a2be2,
+                0 0 20px #9370db,
+                0 0 30px #8a2be2,
+                2px 2px 10px rgba(0,0,0,0.8);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-title:hover {
+            transform: scale(1.05);
+            text-shadow: 
+                0 0 20px #8a2be2,
+                0 0 40px #9370db,
+                0 0 60px #8a2be2,
+                2px 2px 15px rgba(0,0,0,0.9);
+        }
+
+        @keyframes titlePulse {
+            0% { 
+                text-shadow: 
+                    0 0 10px #8a2be2,
+                    0 0 20px #9370db,
+                    0 0 30px #8a2be2,
+                    2px 2px 10px rgba(0,0,0,0.8);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 20px #8a2be2,
+                    0 0 40px #9370db,
+                    0 0 60px #8a2be2,
+                    2px 2px 15px rgba(0,0,0,0.9);
+            }
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+            gap: 40px;
+            z-index: 5;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #4b0082, #8a2be2, #4b0082);
+            background-size: 200% 200%;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 18px 35px;
+            font-size: 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 
+                0 8px 25px rgba(138, 43, 226, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            border: 2px solid transparent;
+            animation: buttonGlow 3s ease-in-out infinite alternate;
+        }
+
+        .nav-button.home-button {
+            background: linear-gradient(135deg, #8b0000, #ff4500, #8b0000);
+            animation: homeButtonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes homeButtonGlow {
+            0% { border-color: rgba(255, 68, 68, 0.5); }
+            100% { border-color: rgba(255, 165, 0, 0.8); }
+        }
+
+        .nav-button.home-button:hover {
+            background-position: 100% 100%;
+            border-color: #ffaa00;
+            box-shadow: 
+                0 15px 40px rgba(255, 68, 68, 0.7),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes buttonGlow {
+            0% { border-color: rgba(138, 43, 226, 0.5); }
+            100% { border-color: rgba(221, 160, 221, 0.8); }
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(138, 43, 226, 0.7),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+            background-position: 100% 100%;
+            border-color: #dda0dd;
+        }
+        
+        .nav-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.8s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        .physique {
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, 
+                rgba(26, 5, 26, 0.95) 0%, 
+                rgba(51, 17, 51, 0.9) 50%, 
+                rgba(26, 5, 26, 0.95) 100%);
+            border: 3px solid rgba(138, 43, 226, 0.6);
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 40px rgba(138, 43, 226, 0.3),
+                inset 0 0 30px rgba(138, 43, 226, 0.1);
+            width: 90%;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+
+        .physique::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(138, 43, 226, 0.05) 0%, 
+                rgba(221, 160, 221, 0.05) 50%, 
+                rgba(138, 43, 226, 0.05) 100%);
+            z-index: -1;
+            animation: sectionGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes sectionGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .physique:hover {
+            transform: translateY(-8px);
+            border-color: rgba(221, 160, 221, 0.8);
+            box-shadow: 
+                0 25px 60px rgba(138, 43, 226, 0.4),
+                inset 0 0 40px rgba(138, 43, 226, 0.2);
+        }
+
+        .physique h2 {
+            font-size: 38px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 15px #8a2be2,
+                0 0 30px #9370db,
+                2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: titleShimmer 3s ease-in-out infinite alternate;
+            position: relative;
+        }
+
+        @keyframes titleShimmer {
+            0% { 
+                text-shadow: 
+                    0 0 15px #8a2be2,
+                    0 0 30px #9370db,
+                    2px 2px 8px rgba(0, 0, 0, 0.8);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 25px #9370db,
+                    0 0 50px #dda0dd,
+                    2px 2px 12px rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        .physique h2::before,
+        .physique h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8a2be2, transparent);
+            transform: translateY(-50%);
+        }
+
+        .physique h2::before {
+            left: -120px;
+        }
+
+        .physique h2::after {
+            right: -120px;
+        }
+
+        .physique p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: justify;
+            font-family: 'Cinzel', serif;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        .physique p span {
+            color: #8a2be2;
+            font-weight: 600;
+            text-shadow: 0 0 10px #8a2be2;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 50px auto;
+            width: 90%;
+            position: relative;
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, 
+                rgba(138, 43, 226, 0.1) 0%, 
+                rgba(221, 160, 221, 0.1) 50%, 
+                rgba(138, 43, 226, 0.1) 100%);
+            border-radius: 30px;
+            z-index: -1;
+            animation: containerGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes containerGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        .image-container img {
+            width: 47%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(138, 43, 226, 0.4),
+                0 0 20px rgba(138, 43, 226, 0.3);
+            border: 3px solid rgba(138, 43, 226, 0.6);
+            transition: all 0.6s ease;
+            filter: brightness(1.1) contrast(1.1) saturate(1.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 
+                0 20px 50px rgba(138, 43, 226, 0.6),
+                0 0 40px rgba(138, 43, 226, 0.5);
+            border-color: rgba(221, 160, 221, 0.8);
+            filter: brightness(1.15) contrast(1.15) saturate(1.2);
+        }
+
+        .image-container img:nth-child(1):hover {
+            animation: imageSparkle1 0.6s ease-in-out;
+        }
+
+        .image-container img:nth-child(2):hover {
+            animation: imageSparkle2 0.6s ease-in-out;
+        }
+
+        @keyframes imageSparkle1 {
+            0%, 100% { filter: brightness(1.1) contrast(1.1) saturate(1.2); }
+            50% { filter: brightness(1.2) contrast(1.2) saturate(1.3) hue-rotate(10deg); }
+        }
+
+        @keyframes imageSparkle2 {
+            0%, 100% { filter: brightness(1.1) contrast(1.1) saturate(1.2); }
+            50% { filter: brightness(1.2) contrast(1.2) saturate(1.3) hue-rotate(-10deg); }
+        }
+
+        .separator {
+            width: 70%;
+            height: 6px;
+            background: linear-gradient(to right, 
+                rgba(138, 43, 226, 0) 0%,
+                rgba(138, 43, 226, 0.8) 20%, 
+                rgba(221, 160, 221, 1) 50%, 
+                rgba(138, 43, 226, 0.8) 80%,
+                rgba(138, 43, 226, 0) 100%);
+            margin: 60px auto;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(221, 160, 221, 0.5);
+            animation: separatorPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes separatorPulse {
+            0% { opacity: 0.7; transform: scaleX(1); }
+            100% { opacity: 1; transform: scaleX(1.02); }
+        }
+
+        @media (max-width: 1200px) {
+            .image-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .image-container img {
+                width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .physique {
+                margin: 30px auto;
+                padding: 25px;
+                width: 95%;
+            }
+            
+            .physique h2 {
+                font-size: 28px;
+            }
+            
+            .physique h2::before,
+            .physique h2::after {
+                display: none;
+            }
+            
+            .image-container img {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1 class="page-title" onclick="window.location.href='menu.html'">Ivy - Personnalité & Physique</h1>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="menu.html" class="nav-button home-button">🏠 Accueil</a>
+        <a href="ivy.html" class="nav-button">Identité & Pouvoirs</a>
+        <a href="histoires.html" class="nav-button">Histoire</a>
+    </div>
+
+    <div class="physique">
+        <h2>╭───༺☽༻ Description Physique ༺☽༻───╮</h2>
+        <p>
+            <span>Ivy</span> conserve dans l'au-delà la beauté qui était la sienne de son vivant. Lorsqu'elle manifeste sa présence à travers le corps de Lyca, son influence transforme l'apparence de sa sœur.<br><br>
+
+            Quand <span>Ivy</span> prend le contrôle, les cheveux dorés de Lyca se transforment entièrement, adoptant une teinte argentée lustrée parcourue de reflets violets, comme si la lune elle-même avait tissé ces mèches divines. Les cornes draconiques déjà présentes chez Lyca  grandissent et s'allongent, courbées vers l'arrière d'un noir profond et lustré adoptant une forme plus élégante.<br><br>
+
+            L'étoile au centre de sa poitrine, habituellement dorée chez Lyca, se transforme en un violet pur et intense. Cette étoile pulse avec une énergie spectrale hypnotique, projetant des vagues de lumière violette qui semblent danser autour de son corps comme des aurores boréales miniatures. Les yeux verts perçants de Lyca laissent place à un regard d'améthyste profonde, reflétant une sérénité que seule la mort peut apporter.<br><br>
+
+            De son vivant, <span>Ivy</span> possédait déjà cette grâce surnaturelle et cette prestance royale qui la distinguaient naturellement. Ses traits, d'une finesse aristocratique.<br><br>
+
+            Aujourd'hui, <span>Ivy</span> rayonne d'une beauté qui transcende le mortel. Sa peau adopte une pâleur qui semble capturer et réfléchir la lumière ambiante.
+        </p>
+    </div>
+
+    <div class="image-container">
+        <img src="Ivy5.png" alt="Ivy - Portrait spectral" />
+        <img src="ivy4.png" alt="Ivy - Essence violette" />
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="physique">
+        <h2>╭───༺☽༻ Description Personnalité ༺☽༻───╮</h2>
+        <p>
+            <span>Ivy</span> était, de son vivant, le parfait contrepoint à la nature impétueuse de sa petite sœur. Là où <span>Lyca</span> fonçait tête baissée, <span>Ivy</span> réfléchissait et analysait. Son tempérament naturellement sage et mesuré en faisait souvent la voix de la raison dans leurs aventures d'enfance. Elle possédait cette maturité précoce qui la faisait paraître plus âgée que ses années, assumant instinctivement le rôle de grande sœur protectrice.<br><br>
+
+            Dotée d'une empathie naturelle et d'une intelligence émotionnelle remarquable, <span>Ivy</span> savait lire les gens et comprendre leurs motivations profondes. Cette sensibilité lui permettait de désamorcer les conflits avant qu'ils n'éclatent et de trouver les mots justes pour apaiser les tensions. Elle était celle vers qui toute la famille se tournait quand la diplomatie était nécessaire.<br><br>
+
+            Aujourd'hui, dans sa forme spectrale, <span>Ivy</span> conserve ces traits de caractère mais avec une profondeur nouvelle, forgée par la tragédie et les siècles d'observation. En tant qu'esprit lié à <span>Lyca</span>, <span>Ivy</span> fait preuve d'une patience infinie et d'une loyauté absolue. Elle observe le monde à travers les yeux de sa sœur, comprenant sa douleur et sa quête de rédemption sans jamais la juger. Bien qu'elle désapprouve parfois les méthodes brutales de <span>Lyca</span>, elle respecte profondément son libre arbitre et ne cherche jamais à imposer sa volonté.<br><br>
+
+            <span>Ivy</span> est devenue la conscience morale que <span>Lyca</span> a parfois du mal à entendre. Elle murmure des conseils bienveillants, offre son soutien dans les moments de doute, et rappelle à sa sœur son humanité quand celle-ci menace de se perdre dans la violence. Paradoxalement, le fait d'avoir été privée de sa propre vie lui donne une perspective précieuse sur la valeur de chaque existence.<br><br>
+
+            Cependant, sa nature spectrale comporte un aspect imprévisible et dangereux. Sans qu'on en connaisse la véritable raison, <span>Ivy</span> se fait parfois submerger par ses propres émotions, comme si sa condition d'esprit rendait le contrôle de ses sentiments infiniment plus complexe. Quand cela arrive, toutes ses émotions deviennent d'une intensité écrasante. Si elle éprouve de la joie ou de la paresse, l'effet reste gérable, mais lorsque la colère ou l'envie de se battre s'empare d'elle, la situation peut rapidement devenir périlleuse. Dans ces moments, <span>Ivy</span> perd sa retenue habituelle et peut manifester une violence qui peut dépasser même celle de <span>Lyca</span>.
+        </p>
+    </div>
+
+    <div class="image-container">
+        <img src="ivy8.jpg" alt="Ivy - Forme spectrale" />
+        <img src="duo.jpeg" alt="Union des deux sœurs" />
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.physique').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+
+            document.querySelectorAll('.image-container img').forEach(img => {
+                img.style.opacity = '0';
+                img.style.transform = 'scale(0.8)';
+                img.style.transition = 'opacity 1s ease, transform 1s ease';
+                observer.observe(img);
+            });
+
+            function typeWriter(element, text, speed = 50) {
+                let i = 0;
+                element.innerHTML = '';
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            const title = document.querySelector('.page-title');
+            if (title) {
+                const originalText = title.textContent;
+                typeWriter(title, originalText, 100);
+            }
+
+            document.querySelectorAll('.physique p').forEach(paragraph => {
+                paragraph.addEventListener('mouseenter', function() {
+                    this.style.textShadow = '2px 2px 8px rgba(138, 43, 226, 0.6)';
+                    this.style.transition = 'text-shadow 0.3s ease';
+                });
+                
+                paragraph.addEventListener('mouseleave', function() {
+                    this.style.textShadow = '1px 1px 3px rgba(0, 0, 0, 0.6)';
+                });
+            });
+
+            setInterval(function() {
+                const names = document.querySelectorAll('.physique p span');
+                names.forEach(name => {
+                    if (Math.random() > 0.8) {
+                        name.style.animation = 'none';
+                        name.offsetHeight;
+                        name.style.animation = 'titleShimmer 1s ease-in-out';
+                    }
+                });
+            }, 4000);
+
+            console.log('Page Ivy entièrement initialisée');
+        });
+
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.2;
+            document.body.style.backgroundPosition = `${rate * 0.5}px ${rate}px`;
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            const moveX = (mouseX - 0.5) * 30;
+            const moveY = (mouseY - 0.5) * 30;
+            
+            document.body.style.backgroundPosition = `${moveX}px ${moveY}px`;
+        });
+    </script>
+
+</body>
+</html>

@@ -34,7 +34,6 @@
             color: white;
         }
 
-        /* Particules de feu en arrière-plan */
         body::before {
             content: '';
             position: fixed;
@@ -60,7 +59,6 @@
             to { transform: translateY(-100px); }
         }
 
-        /* Header minimaliste pour cette page */
         .page-header {
             text-align: center;
             padding: 40px 20px;
@@ -134,7 +132,6 @@
             }
         }
 
-        /* Navigation buttons améliorée */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -172,7 +169,6 @@
             animation: buttonGlow 3s ease-in-out infinite alternate;
         }
 
-        /* Bouton accueil avec style spécial */
         .nav-button.home-button {
             background: linear-gradient(135deg, #4b0082, #8a2be2, #4b0082);
             animation: homeButtonGlow 3s ease-in-out infinite alternate;
@@ -220,7 +216,6 @@
             left: 100%;
         }
 
-        /* Contrôles audio stylisés */
         .controls {
             position: fixed;
             top: 20px;
@@ -347,7 +342,6 @@
             text-shadow: 0 0 10px #ff4500;
         }
 
-        /* Sections principales */
         .physique {
             margin: 50px auto;
             padding: 40px;
@@ -463,7 +457,6 @@
             text-shadow: 0 0 10px #ff4500;
         }
 
-        /* Conteneur d'images amélioré */
         .image-container {
             display: flex;
             justify-content: center;
@@ -533,7 +526,6 @@
             filter: brightness(1.15) contrast(1.15) saturate(1.2);
         }
 
-        /* Effet de particules sur les images */
         .image-container img:nth-child(1):hover {
             animation: imageSparkle1 0.6s ease-in-out;
         }
@@ -552,7 +544,6 @@
             50% { filter: brightness(1.2) contrast(1.2) saturate(1.3) hue-rotate(-5deg); }
         }
 
-        /* Séparateur décoratif */
         .separator {
             width: 70%;
             height: 6px;
@@ -573,7 +564,6 @@
             100% { opacity: 1; transform: scaleX(1.02); }
         }
 
-        /* Responsive */
         @media (max-width: 1200px) {
             .image-container {
                 flex-direction: column;
@@ -624,19 +614,16 @@
     </style>
 </head>
 <body>
-    <!-- Header de la page -->
     <div class="page-header">
-        <h1 class="page-title" onclick="window.location.href='menu.html'">Personnalité & Physique</h1>
+        <h1 class="page-title" onclick="window.location.href='menu.html'">Lyca - Physique & Personnalité</h1>
     </div>
 
-    <!-- Navigation -->
     <div class="nav-buttons">
         <a href="menu.html" class="nav-button home-button">🏠 Accueil</a>
         <a href="lyca.html" class="nav-button">Identité</a>
         <a href="histoires.html" class="nav-button">Histoire</a>
     </div>
 
-    <!-- Contrôles audio -->
     <div class="controls">
         <button id="play-pause-btn">⏸️</button>
         <div class="volume-container">
@@ -646,13 +633,11 @@
         <div class="music-title">What The Firelight Casts</div>
     </div>
 
-    <!-- Audio -->
     <audio id="background-music" autoplay loop>
         <source src="What The Firelight Casts Theme - AKVN.mp4" type="audio/mpeg">
         Votre navigateur ne supporte pas l'audio.
     </audio>
 
-    <!-- Section Description Physique -->
     <div class="physique">
         <h2>╭───༺☆༻ Description Physique ༺☆༻───╮</h2>
         <p>
@@ -668,16 +653,13 @@
         </p>
     </div>
 
-    <!-- Conteneur d'images -->
     <div class="image-container">
         <img src="uwu.jpg" alt="Image de Lyca" />
         <img src="fleur.jpg" alt="Image de Lyca" />
     </div>
 
-    <!-- Séparateur décoratif -->
     <div class="separator"></div>
 
-    <!-- Section Description Personnalité -->
     <div class="physique">
         <h2>╭───༺☆༻ Description Personnalité ༺☆༻───╮</h2>
         <p>
@@ -691,29 +673,23 @@
         </p>
     </div>
 
-    <!-- Script JavaScript corrigé -->
     <script>
-        // Variables globales
         let audio = null;
         let playPauseBtn = null;
         let volumeSlider = null;
         let volumeIcon = null;
 
-        // Attendre que le DOM soit chargé
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser les éléments
             audio = document.getElementById('background-music');
             playPauseBtn = document.getElementById('play-pause-btn');
             volumeSlider = document.getElementById('volume-slider');
             volumeIcon = document.querySelector('.volume-icon');
 
-            // Vérifier que tous les éléments existent
             if (!audio || !playPauseBtn || !volumeSlider || !volumeIcon) {
                 console.error('Certains éléments audio ne sont pas trouvés');
                 return;
             }
 
-            // Fonction pour basculer play/pause
             function togglePlayPause() {
                 if (audio.paused) {
                     audio.play().then(() => {
@@ -728,7 +704,6 @@
                 }
             }
 
-            // Fonction pour mettre à jour le volume
             function updateVolume(volume) {
                 audio.volume = parseFloat(volume);
                 
@@ -743,17 +718,14 @@
                 }
             }
 
-            // Attacher les événements
             playPauseBtn.addEventListener('click', togglePlayPause);
             volumeSlider.addEventListener('input', function() {
                 updateVolume(this.value);
             });
 
-            // Initialisation du volume
             audio.volume = parseFloat(volumeSlider.value);
             updateVolume(volumeSlider.value);
 
-            // Gestion des événements audio
             audio.addEventListener('loadeddata', function() {
                 playPauseBtn.textContent = audio.paused ? "▶️" : "⏸️";
                 console.log('Audio chargé avec succès');
@@ -774,7 +746,6 @@
                 playPauseBtn.textContent = "▶️";
             });
 
-            // Gérer l'autoplay qui pourrait être bloqué
             audio.addEventListener('canplaythrough', function() {
                 if (audio.paused) {
                     audio.play().catch(e => {
@@ -784,7 +755,6 @@
                 }
             });
 
-            // Animation d'entrée pour les sections
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -799,7 +769,6 @@
                 });
             }, observerOptions);
 
-            // Observer les sections
             document.querySelectorAll('.physique').forEach(section => {
                 section.style.opacity = '0';
                 section.style.transform = 'translateY(50px)';
@@ -807,7 +776,6 @@
                 observer.observe(section);
             });
 
-            // Observer les images
             document.querySelectorAll('.image-container img').forEach(img => {
                 img.style.opacity = '0';
                 img.style.transform = 'scale(0.8)';
@@ -815,7 +783,6 @@
                 observer.observe(img);
             });
 
-            // Effet de typing pour les titres
             function typeWriter(element, text, speed = 50) {
                 let i = 0;
                 element.innerHTML = '';
@@ -829,14 +796,12 @@
                 type();
             }
 
-            // Démarrer l'effet de typing au chargement
             const title = document.querySelector('.page-title');
             if (title) {
                 const originalText = title.textContent;
                 typeWriter(title, originalText, 100);
             }
 
-            // Effet de survol pour les paragraphes
             document.querySelectorAll('.physique p').forEach(paragraph => {
                 paragraph.addEventListener('mouseenter', function() {
                     this.style.textShadow = '2px 2px 8px rgba(255, 68, 68, 0.6)';
@@ -848,7 +813,6 @@
                 });
             });
 
-            // Effet de pulsation sur les contrôles audio
             setInterval(function() {
                 const controls = document.querySelector('.controls');
                 if (controls) {
@@ -862,7 +826,6 @@
             console.log('Page entièrement initialisée');
         });
 
-        // Effet de parallaxe au scroll
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.3;

@@ -33,7 +33,6 @@
             position: relative;
         }
 
-        /* Particules spectrales en arrière-plan */
         body::before {
             content: '';
             position: fixed;
@@ -59,7 +58,6 @@
             to { transform: translateY(-100px) translateX(10px); }
         }
 
-        /* Header amélioré */
         header {
             position: relative;
             display: flex;
@@ -189,7 +187,6 @@
             }
         }
         
-        /* Navigation buttons améliorée */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -227,7 +224,6 @@
             animation: spectralButtonGlow 3s ease-in-out infinite alternate;
         }
 
-        /* Bouton accueil avec style spécial */
         .nav-button.home-button {
             background: linear-gradient(135deg, #8b0000, #ff4500, #8b0000);
             animation: homeButtonGlow 3s ease-in-out infinite alternate;
@@ -295,7 +291,6 @@
             100% { opacity: 1; transform: scaleX(1.02); }
         }
         
-        /* Conteneur principal amélioré */
         .image-and-content {
             display: flex;
             justify-content: space-between;
@@ -305,7 +300,6 @@
             position: relative;
         }
 
-        /* Sections améliorées */
         .identity-section, .skills-section {
             background: linear-gradient(135deg, 
                 rgba(26, 5, 26, 0.95) 0%, 
@@ -392,7 +386,6 @@
             }
         }
 
-        /* Images améliorées */
         .character-image, .spectral {
             max-width: 380px;
             height: auto;
@@ -414,7 +407,6 @@
             border-color: rgba(221, 160, 221, 0.8);
         }
 
-        /* Compétences avec bordures colorées améliorées */
         .essence-spectrale {
             border: 3px solid rgba(138, 43, 226, 0.8);
             background: linear-gradient(135deg, rgba(75, 0, 130, 0.2), rgba(138, 43, 226, 0.1));
@@ -455,7 +447,14 @@
                 inset 0 0 20px rgba(105, 105, 105, 0.1);
         }
 
-        /* Effet hover pour les articles */
+        .immunite-spirituelle {
+            border: 3px solid rgba(32, 18, 230, 0.8);
+            background: linear-gradient(135deg, rgba(132, 0, 255, 0.2), rgba(255, 223, 0, 0.1));
+            box-shadow: 
+                0 0 20px rgba(89, 0, 255, 0.3),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
         article {
             padding: 25px;
             border-radius: 15px;
@@ -494,7 +493,6 @@
             margin-bottom: 10px;
         }
 
-        /* Responsive */
         @media (max-width: 1200px) {
             .image-and-content {
                 flex-direction: column;
@@ -542,8 +540,8 @@
 
 <div class="nav-buttons">
     <a href="menu.html" class="nav-button home-button">🏠 Accueil</a>
-    <a href="suite.html" class="nav-button">Personnalité/Physique</a>
-    <a href="histoires.html" class="nav-button">Histoire d'Ivy</a>
+    <a href="phy_ivy.html" class="nav-button">Personnalité/Physique</a>
+    <a href="histoires.html" class="nav-button">Histoire</a>
 </div>
 
 <div class="separator"></div>
@@ -580,6 +578,11 @@
 
             <article class="skills-item communion-ames">
                 <strong>Guérison d'Ivy :</strong> Malgré sa nature de combattante redoutable, le lien d'Ivy avec ses flammes violettes lui octroie des capacités régénératrices remarquables. Lorsqu'elle subit des blessures, elle peut diriger ses flammes violettes directement sur les zones meurtries pour sentir sa chair se régénérer progressivement. La chaleur apaisante de ses flammes consume la douleur tandis que les plaies se referment délicatement, comme si le feu violet purifiait et renouvelait les tissus endommagés
+            </article>
+
+            <article class="skills-item immunite-spirituelle">
+                <strong>Immunité Spirituelle Absolue :</strong> En tant qu'esprit lié à l'âme de sa sœur, Ivy possède une résistance naturelle totale aux manipulations spirituelles et magiques. Sa nature la rend complètement immunisée contre toutes les afflictions de l'âme, qu'elles soient bénéfiques ou maléfiques. Les sorts de charme, de contrôle mental, de malédiction ou d'empoisonnement spirituel glissent comme l'eau sur le verre.
+                Cette immunité s'étend également à tous les sorts d'amélioration (buffs) et d'affaiblissement (debuffs) - aucune magie externe ne peut altérer ses capacités naturelles, que ce soit pour les renforcer ou les diminuer.
             </article>
         </div>
     </div>

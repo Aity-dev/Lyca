@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Sœurs Vicop</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icone/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icone/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icone/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Fiche RP de Lyca et Ivy" />
+    <meta property="og:description" content="Fiche RP de Lyca et Ivy" />
+    <meta property="og:image" content="https://aity-dev.github.io/Lyca/doublepers.jpg" />
+    <meta property="og:url" content="https://aity-dev.github.io/Lyca/menu.html" />
+    <meta property="og:type" content="website" />
 
     <style>
         * {
@@ -21,14 +31,12 @@
             position: relative;
         }
 
-        /* Container principal split */
         .split-container {
             display: flex;
             height: 100vh;
             position: relative;
         }
 
-        /* Côté gauche - Lyca */
         .left-side {
             width: 50%;
             background: linear-gradient(135deg, 
@@ -46,7 +54,6 @@
             overflow: hidden;
         }
 
-        /* Côté droit - Ivy */
         .right-side {
             width: 50%;
             background: linear-gradient(135deg, 
@@ -64,7 +71,6 @@
             overflow: hidden;
         }
 
-        /* Effets de particules */
         .left-side::before {
             content: '';
             position: absolute;
@@ -111,7 +117,6 @@
             to { transform: translateY(-100px) rotate(-360deg); }
         }
 
-        /* Effets hover */
         .left-side:hover {
             width: 60%;
             filter: brightness(1.2);
@@ -138,7 +143,6 @@
             filter: brightness(0.7);
         }
 
-        /* Contenu des côtés */
         .side-content {
             position: absolute;
             top: 50%;
@@ -235,7 +239,6 @@
             transform: scale(1.05);
         }
 
-        /* Citation philosophique centrale */
         .family-name {
             position: absolute;
             top: 8%;
@@ -286,7 +289,6 @@
             }
         }
 
-        /* Ligne de séparation */
         .divider {
             position: absolute;
             top: 0;
@@ -307,7 +309,6 @@
             100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4); }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .character-name {
                 font-size: 2rem;
@@ -335,13 +336,10 @@
 </head>
 <body>
     <div class="split-container">
-        <!-- Citation philosophique centrale -->
         <div class="family-name">"Dans l'ombre de l'une vit l'écho de l'autre"</div>
         
-        <!-- Ligne de séparation -->
         <div class="divider"></div>
         
-        <!-- Côté gauche - Lyca -->
         <div class="left-side" onclick="goToLyca()">
             <div class="side-content">
                 <h1 class="character-name">Lyca Vicop</h1>
@@ -349,7 +347,6 @@
             </div>
         </div>
         
-        <!-- Côté droit - Ivy -->
         <div class="right-side" onclick="goToIvy()">
             <div class="side-content">
                 <h1 class="character-name">Ivy Vicop</h1>
@@ -360,28 +357,23 @@
 
     <script>
         function goToLyca() {
-            // Effet de transition
             document.querySelector('.left-side').style.transform = 'scale(1.1)';
             document.querySelector('.right-side').style.opacity = '0.3';
             
             setTimeout(() => {
-                // Redirection vers la page de Lyca
                 window.location.href = 'lyca.html';
             }, 500);
         }
 
         function goToIvy() {
-            // Effet de transition
             document.querySelector('.right-side').style.transform = 'scale(1.1)';
             document.querySelector('.left-side').style.opacity = '0.3';
             
             setTimeout(() => {
-                // Redirection vers la page d'Ivy
                 window.location.href = 'ivy.html';
             }, 500);
         }
 
-        // Effet de parallaxe subtil au mouvement de la souris
         document.addEventListener('mousemove', function(e) {
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
@@ -393,7 +385,6 @@
             rightSide.style.transform = `perspective(1000px) rotateY(${(mouseX - 0.5) * -2}deg) rotateX(${(mouseY - 0.5) * 1}deg)`;
         });
 
-        // Animation d'entrée
         window.addEventListener('load', function() {
             document.querySelector('.left-side').style.transform = 'translateX(-100%)';
             document.querySelector('.right-side').style.transform = 'translateX(100%)';
