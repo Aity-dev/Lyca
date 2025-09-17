@@ -196,6 +196,7 @@
             z-index: 5;
             position: relative;
             flex-wrap: wrap;
+            padding: 0 20px;
         }
         
         .nav-button {
@@ -388,6 +389,7 @@
 
         .character-image, .fire {
             max-width: 380px;
+            width: 100%;
             height: auto;
             border-radius: 20px;
             margin-bottom: 25px;
@@ -409,6 +411,7 @@
 
         .booms {
             max-width: 350px;
+            width: 100%;
             height: auto;
             border-radius: 20px;
             margin-left: 80px;
@@ -507,36 +510,178 @@
             margin-bottom: 10px;
         }
 
+        /* Optimisations Mobile */
         @media (max-width: 1200px) {
             .image-and-content {
                 flex-direction: column;
                 align-items: center;
+                margin: 20px;
+                gap: 20px;
             }
             
-            .character-image, .fire, .booms {
+            .character-image, .fire {
                 max-width: 300px;
                 margin: 20px auto;
+            }
+            
+            .booms {
+                margin-left: 0;
+                margin-top: 20px;
+                transform: scale(1.2);
             }
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            
+            header {
+                height: 40vh;
+            }
+            
             .header-text {
-                font-size: 28px;
+                font-size: 24px;
                 letter-spacing: 2px;
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .encadre-text {
-                font-size: 24px;
+                font-size: 18px;
                 padding: 15px 25px;
+                bottom: 15px;
+                left: 15px;
+                right: 15px;
+                transform: none;
             }
             
             .nav-buttons {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 15px 25px;
+                font-size: 16px;
+            }
+            
+            .separator {
+                width: 90%;
+                margin: 20px auto;
+            }
+            
+            .image-and-content {
+                margin: 15px;
+                gap: 15px;
+            }
+            
+            .identity-section, .skills-section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
             }
             
             .identity-title, .skills-title {
-                font-size: 28px;
+                font-size: 24px;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+            }
+            
+            .identity-item, .skills-item {
+                margin: 12px 0;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            article {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            article strong {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            
+            .character-image, .fire {
+                max-width: 100%;
+                margin: 15px 0;
+            }
+            
+            .booms {
+                max-width: 100%;
+                margin: 15px 0;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+            
+            .encadre-text {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            
+            .nav-button {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+            
+            .identity-title, .skills-title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+            
+            .identity-item, .skills-item {
+                font-size: 13px;
+            }
+            
+            article strong {
+                font-size: 14px;
+            }
+            
+            .identity-section, .skills-section {
+                padding: 15px 10px;
+            }
+        }
+
+        /* Améliorer la lisibilité sur mobile */
+        @media (max-width: 768px) {
+            .identity-item strong {
+                display: inline;
+                font-size: 15px;
+            }
+            
+            /* Réduire les effets visuels sur mobile pour de meilleures performances */
+            .identity-section:hover, .skills-section:hover {
+                transform: none;
+            }
+            
+            article:hover {
+                transform: none;
+            }
+            
+            .character-image:hover, .fire:hover {
+                transform: scale(1.02);
+            }
+            
+            /* Désactiver les animations sur très petits écrans */
+            @media (max-width: 480px) {
+                * {
+                    animation-duration: 0.1s !important;
+                }
             }
         }
     </style>
@@ -549,7 +694,6 @@
         Ton navigateur ne supporte pas la vidéo.
     </video>
     <div class="header-text" onclick="window.location.href='menu.html'">Fiche d'@Aityum</div>
-    
 </header>
 
 <div class="nav-buttons">
