@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="icone/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icone/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
 
     <meta property="og:title" content="Fiche RP de Lyca et Ivy" />
     <meta property="og:description" content="Fiche RP de Lyca et Ivy" />
@@ -31,19 +34,62 @@
             position: relative;
         }
 
+        /* Préchargement des images */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .preloader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top: 3px solid #ffd700;
+            border-right: 3px solid #9370db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         .split-container {
             display: flex;
             height: 100vh;
             position: relative;
+            overflow: hidden;
         }
 
         .left-side {
             width: 50%;
-            background: linear-gradient(135deg, 
-                rgba(255, 140, 0, 0.2) 0%,
-                rgba(255, 69, 0, 0.15) 30%,
-                rgba(220, 20, 60, 0.2) 70%,
-                rgba(139, 0, 0, 0.3) 100%),
+            background: linear-gradient(135deg,
+                    rgba(255, 140, 0, 0.2) 0%,
+                    rgba(255, 69, 0, 0.15) 30%,
+                    rgba(220, 20, 60, 0.2) 70%,
+                    rgba(139, 0, 0, 0.3) 100%),
                 url('lyca_test.jpg');
             background-size: cover;
             background-position: center;
@@ -52,15 +98,16 @@
             cursor: pointer;
             transition: all 0.8s ease;
             overflow: hidden;
+            will-change: transform;
         }
 
         .right-side {
             width: 50%;
-            background: linear-gradient(135deg, 
-                rgba(75, 0, 130, 0.2) 0%,
-                rgba(138, 43, 226, 0.15) 30%,
-                rgba(72, 61, 139, 0.2) 70%,
-                rgba(25, 25, 112, 0.3) 100%),
+            background: linear-gradient(135deg,
+                    rgba(75, 0, 130, 0.2) 0%,
+                    rgba(138, 43, 226, 0.15) 30%,
+                    rgba(72, 61, 139, 0.2) 70%,
+                    rgba(25, 25, 112, 0.3) 100%),
                 url('ivy.jpg');
             background-size: cover;
             background-position: center;
@@ -69,6 +116,25 @@
             cursor: pointer;
             transition: all 0.8s ease;
             overflow: hidden;
+            will-change: transform;
+        }
+
+        /* Texture grain overlay */
+        .left-side::after,
+        .right-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.03) 0.5px, transparent 0.5px);
+            background-size: 3px 3px, 4px 4px, 2px 2px;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .left-side::before {
@@ -78,7 +144,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20px 30px, #ff4444, transparent),
                 radial-gradient(2px 2px at 40px 70px, #ff6600, transparent),
                 radial-gradient(1px 1px at 90px 40px, #ffaa00, transparent),
@@ -87,6 +153,7 @@
             background-size: 150px 100px;
             animation: sparkleLeft 4s linear infinite;
             opacity: 0.15;
+            will-change: transform;
         }
 
         .right-side::before {
@@ -96,7 +163,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20px 30px, #9370db, transparent),
                 radial-gradient(2px 2px at 40px 70px, #8a2be2, transparent),
                 radial-gradient(1px 1px at 90px 40px, #dda0dd, transparent),
@@ -105,16 +172,27 @@
             background-size: 150px 100px;
             animation: sparkleRight 4s linear infinite;
             opacity: 0.15;
+            will-change: transform;
         }
 
         @keyframes sparkleLeft {
-            from { transform: translateY(0px) rotate(0deg); }
-            to { transform: translateY(-100px) rotate(360deg); }
+            from {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
 
         @keyframes sparkleRight {
-            from { transform: translateY(0px) rotate(0deg); }
-            to { transform: translateY(-100px) rotate(-360deg); }
+            from {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-100px) rotate(-360deg);
+            }
         }
 
         .left-side:hover {
@@ -129,7 +207,7 @@
             box-shadow: inset -20px 0 50px rgba(255, 69, 0, 0.4);
         }
 
-        .left-side:hover + .right-side {
+        .left-side:hover+.right-side {
             width: 40%;
             filter: brightness(0.7);
         }
@@ -151,6 +229,7 @@
             text-align: center;
             z-index: 10;
             transition: all 0.6s ease;
+            will-change: transform;
         }
 
         .character-name {
@@ -161,36 +240,64 @@
             letter-spacing: 6px;
             margin-bottom: 30px;
             position: relative;
+            will-change: transform;
+        }
+
+        /* Effet de breathing sur les noms */
+        .character-name {
+            animation: breathing 4s ease-in-out infinite;
+        }
+
+        @keyframes breathing {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
         }
 
         .left-side .character-name {
             color: #ffd700;
-            text-shadow: 
+            text-shadow:
                 0 0 20px #ff4500,
                 0 0 40px #ff6600,
                 0 0 60px #ff4500,
                 3px 3px 15px rgba(0, 0, 0, 0.8);
-            animation: glowOrange 3s ease-in-out infinite alternate;
+            animation: glowOrange 3s ease-in-out infinite alternate, breathing 4s ease-in-out infinite;
         }
 
         .right-side .character-name {
             color: #dda0dd;
-            text-shadow: 
+            text-shadow:
                 0 0 20px #9370db,
                 0 0 40px #8a2be2,
                 0 0 60px #9370db,
                 3px 3px 15px rgba(0, 0, 0, 0.8);
-            animation: glowPurple 3s ease-in-out infinite alternate;
+            animation: glowPurple 3s ease-in-out infinite alternate, breathing 4s ease-in-out infinite;
         }
 
         @keyframes glowPurple {
-            0% { text-shadow: 0 0 20px #9370db, 0 0 40px #8a2be2, 0 0 60px #9370db, 3px 3px 15px rgba(0, 0, 0, 0.8); }
-            100% { text-shadow: 0 0 30px #9370db, 0 0 60px #8a2be2, 0 0 90px #9370db, 3px 3px 20px rgba(0, 0, 0, 0.9); }
+            0% {
+                text-shadow: 0 0 20px #9370db, 0 0 40px #8a2be2, 0 0 60px #9370db, 3px 3px 15px rgba(0, 0, 0, 0.8);
+            }
+
+            100% {
+                text-shadow: 0 0 30px #9370db, 0 0 60px #8a2be2, 0 0 90px #9370db, 3px 3px 20px rgba(0, 0, 0, 0.9);
+            }
         }
 
         @keyframes glowOrange {
-            0% { text-shadow: 0 0 20px #ff4500, 0 0 40px #ff6600, 0 0 60px #ff4500, 3px 3px 15px rgba(0, 0, 0, 0.8); }
-            100% { text-shadow: 0 0 30px #ff4500, 0 0 60px #ff6600, 0 0 90px #ff4500, 3px 3px 20px rgba(0, 0, 0, 0.9); }
+            0% {
+                text-shadow: 0 0 20px #ff4500, 0 0 40px #ff6600, 0 0 60px #ff4500, 3px 3px 15px rgba(0, 0, 0, 0.8);
+            }
+
+            100% {
+                text-shadow: 0 0 30px #ff4500, 0 0 60px #ff6600, 0 0 90px #ff4500, 3px 3px 20px rgba(0, 0, 0, 0.9);
+            }
         }
 
         .character-title {
@@ -239,6 +346,7 @@
             transform: scale(1.05);
         }
 
+        /* Dégradé inversé */
         .family-name {
             position: absolute;
             top: 8%;
@@ -249,128 +357,178 @@
             font-weight: 600;
             font-style: italic;
             letter-spacing: 3px;
-            background: linear-gradient(90deg, 
-                #ffd700 0%, 
-                #ff6600 25%, 
-                #ffffff 50%, 
-                #9370db 75%, 
-                #8a2be2 100%);
+            background: linear-gradient(90deg,
+                    #8a2be2 0%,
+                    #9370db 25%,
+                    #ffffff 50%,
+                    #ff6600 75%,
+                    #ffd700 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: none;
             z-index: 20;
-            animation: gradientShift 4s ease-in-out infinite alternate;
+            animation: gradientShiftInverse 4s ease-in-out infinite alternate;
             text-align: center;
             max-width: 80%;
             line-height: 1.4;
         }
 
-        @keyframes gradientShift {
-            0% { 
-                background: linear-gradient(90deg, 
-                    #ffd700 0%, 
-                    #ff6600 25%, 
-                    #ffffff 50%, 
-                    #9370db 75%, 
-                    #8a2be2 100%);
+        @keyframes gradientShiftInverse {
+            0% {
+                background: linear-gradient(90deg,
+                        #8a2be2 0%,
+                        #9370db 25%,
+                        #ffffff 50%,
+                        #ff6600 75%,
+                        #ffd700 100%);
                 background-clip: text;
                 -webkit-background-clip: text;
             }
-            100% { 
-                background: linear-gradient(90deg, 
-                    #ff4500 0%, 
-                    #ffd700 25%, 
-                    #ffffff 50%, 
-                    #dda0dd 75%, 
-                    #9370db 100%);
+
+            100% {
+                background: linear-gradient(90deg,
+                        #9370db 0%,
+                        #dda0dd 25%,
+                        #ffffff 50%,
+                        #ffd700 75%,
+                        #ff4500 100%);
                 background-clip: text;
                 -webkit-background-clip: text;
             }
+        }
+
+        /* Effet de transition portal */
+        .portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .portal-overlay.active {
+            opacity: 1;
+        }
+
+        .portal-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .portal-circle.lyca {
+            background: radial-gradient(circle,
+                    rgba(255, 215, 0, 0.9) 0%,
+                    rgba(255, 140, 0, 0.8) 30%,
+                    rgba(255, 69, 0, 0.6) 70%,
+                    transparent 100%);
+        }
+
+        .portal-circle.ivy {
+            background: radial-gradient(circle,
+                    rgba(221, 160, 221, 0.9) 0%,
+                    rgba(147, 112, 219, 0.8) 30%,
+                    rgba(138, 43, 226, 0.6) 70%,
+                    transparent 100%);
+        }
+
+        .portal-circle.expand {
+            width: 200vw;
+            height: 200vw;
         }
 
         @media (max-width: 768px) {
             .split-container {
                 flex-direction: column;
             }
-            
-            .left-side, .right-side {
+
+            .left-side,
+            .right-side {
                 width: 100% !important;
                 height: 50vh;
                 transition: all 0.6s ease;
             }
-            
-            .left-side:hover, .right-side:hover {
+
+            .left-side:hover,
+            .right-side:hover {
                 height: 60vh;
                 width: 100% !important;
             }
-            
-            .left-side:hover + .right-side {
+
+            .left-side:hover+.right-side {
                 height: 40vh;
                 width: 100% !important;
             }
-            
+
             .split-container:has(.right-side:hover) .left-side {
                 height: 40vh;
                 width: 100% !important;
             }
-            
+
             .character-name {
                 font-size: 2.5rem;
                 letter-spacing: 3px;
                 margin-bottom: 20px;
             }
-            
+
             .family-name {
                 font-size: 1.3rem;
                 letter-spacing: 2px;
                 top: 3%;
                 max-width: 90%;
             }
-            
+
             .character-title {
                 font-size: 1.2rem;
                 letter-spacing: 2px;
                 margin-bottom: 20px;
             }
-            
+
             .enter-button {
                 font-size: 1rem;
                 padding: 12px 30px;
                 letter-spacing: 2px;
             }
-            
-            /* Ajustements pour les effets de hover sur mobile */
+
             .left-side:hover {
                 box-shadow: inset 0 20px 50px rgba(138, 43, 226, 0.4);
             }
-            
+
             .right-side:hover {
                 box-shadow: inset 0 -20px 50px rgba(255, 69, 0, 0.4);
             }
-            
-            /* Animation d'entrée adaptée pour mobile */
+
             .mobile-load .left-side {
                 transform: translateY(-100%) !important;
             }
-            
+
             .mobile-load .right-side {
                 transform: translateY(100%) !important;
             }
         }
-        
+
         @media (max-width: 480px) {
             .character-name {
                 font-size: 2rem;
                 letter-spacing: 2px;
             }
-            
+
             .family-name {
                 font-size: 1.1rem;
                 letter-spacing: 1px;
                 top: 2%;
             }
-            
+
             .character-title {
                 font-size: 1rem;
                 letter-spacing: 1px;
@@ -378,67 +536,80 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Préchargeur -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-spinner"></div>
+            <div>Chargement...</div>
+        </div>
+    </div>
+
+    <!-- Effet portal -->
+    <div class="portal-overlay" id="portalOverlay">
+        <div class="portal-circle" id="portalCircle"></div>
+    </div>
+
     <div class="split-container">
         <div class="family-name">"Dans l'ombre de l'une vit l'écho de l'autre"</div>
-        
+
+        <!-- ==== DEBUT A REMPLACER (HTML LEFT + RIGHT SIDE) ==== -->
         <div class="left-side" onclick="goToLyca()">
+            <div class="panel panel-left"></div>
             <div class="side-content">
                 <h1 class="character-name">Lyca Vicop</h1>
                 <p class="character-title">L'Âme Vivante</p>
             </div>
         </div>
-        
+
         <div class="right-side" onclick="goToIvy()">
+            <div class="panel panel-right"></div>
             <div class="side-content">
                 <h1 class="character-name">Ivy Vicop</h1>
                 <p class="character-title">L'Âme Errante</p>
             </div>
         </div>
+        <!-- ==== FIN A REMPLACER (HTML LEFT + RIGHT SIDE) ==== -->
+
+
     </div>
 
     <script>
-        function goToLyca() {
-            document.querySelector('.left-side').style.transform = 'scale(1.1)';
-            document.querySelector('.right-side').style.opacity = '0.3';
-            
-            setTimeout(() => {
-                window.location.href = 'lyca.html';
-            }, 500);
-        }
+        // Préchargement des images
+        window.addEventListener('load', function () {
+            const images = ['lyca_test.jpg', 'ivy.jpg'];
+            let loadedImages = 0;
 
-        function goToIvy() {
-            document.querySelector('.right-side').style.transform = 'scale(1.1)';
-            document.querySelector('.left-side').style.opacity = '0.3';
-            
-            setTimeout(() => {
-                window.location.href = 'ivy.html';
-            }, 500);
-        }
+            function checkAllImagesLoaded() {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    setTimeout(() => {
+                        document.getElementById('preloader').style.opacity = '0';
+                        setTimeout(() => {
+                            document.getElementById('preloader').style.display = 'none';
+                            initializeAnimations();
+                        }, 500);
+                    }, 500);
+                }
+            }
 
-        document.addEventListener('mousemove', function(e) {
-            // Désactiver l'effet 3D sur mobile
-            if (window.innerWidth <= 768) return;
-            
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            const leftSide = document.querySelector('.left-side');
-            const rightSide = document.querySelector('.right-side');
-            
-            leftSide.style.transform = `perspective(1000px) rotateY(${(mouseX - 0.5) * 2}deg) rotateX(${(mouseY - 0.5) * -1}deg)`;
-            rightSide.style.transform = `perspective(1000px) rotateY(${(mouseX - 0.5) * -2}deg) rotateX(${(mouseY - 0.5) * 1}deg)`;
+            images.forEach(src => {
+                const img = new Image();
+                img.onload = checkAllImagesLoaded;
+                img.onerror = checkAllImagesLoaded;
+                img.src = src;
+            });
         });
 
-        window.addEventListener('load', function() {
-            // Détection mobile
+        function initializeAnimations() {
             const isMobile = window.innerWidth <= 768;
-            
+
             if (isMobile) {
                 document.body.classList.add('mobile-load');
                 document.querySelector('.left-side').style.transform = 'translateY(-100%)';
                 document.querySelector('.right-side').style.transform = 'translateY(100%)';
-                
+
                 setTimeout(() => {
                     document.querySelector('.left-side').style.transform = 'translateY(0)';
                     document.querySelector('.right-side').style.transform = 'translateY(0)';
@@ -446,13 +617,67 @@
             } else {
                 document.querySelector('.left-side').style.transform = 'translateX(-100%)';
                 document.querySelector('.right-side').style.transform = 'translateX(100%)';
-                
+
                 setTimeout(() => {
                     document.querySelector('.left-side').style.transform = 'translateX(0)';
                     document.querySelector('.right-side').style.transform = 'translateX(0)';
                 }, 100);
             }
+        }
+
+        // Transition portal améliorée
+        function goToLyca() {
+            const portalOverlay = document.getElementById('portalOverlay');
+            const portalCircle = document.getElementById('portalCircle');
+
+            portalCircle.className = 'portal-circle lyca';
+            portalOverlay.classList.add('active');
+
+            setTimeout(() => {
+                portalCircle.classList.add('expand');
+            }, 50);
+
+            setTimeout(() => {
+                window.location.href = 'lyca.html';
+            }, 800);
+        }
+
+        function goToIvy() {
+            const portalOverlay = document.getElementById('portalOverlay');
+            const portalCircle = document.getElementById('portalCircle');
+
+            portalCircle.className = 'portal-circle ivy';
+            portalOverlay.classList.add('active');
+
+            setTimeout(() => {
+                portalCircle.classList.add('expand');
+            }, 50);
+
+            setTimeout(() => {
+                window.location.href = 'ivy.html';
+            }, 800);
+        }
+
+        // ==== DEBUT A REMPLACER (JS mousemove) ====
+        document.addEventListener('mousemove', function (e) {
+            if (window.innerWidth <= 768) return;
+
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            const leftPanel = document.querySelector('.panel-left');
+            const rightPanel = document.querySelector('.panel-right');
+
+            leftPanel.style.transform =
+                `perspective(1000px) rotateY(${(mouseX - 0.5) * 2}deg) rotateX(${(mouseY - 0.5) * -1}deg)`;
+            rightPanel.style.transform =
+                `perspective(1000px) rotateY(${(mouseX - 0.5) * -2}deg) rotateX(${(mouseY - 0.5) * 1}deg)`;
         });
+        // ==== FIN A REMPLACER (JS mousemove) ====
+
+
+
     </script>
 </body>
+
 </html>
