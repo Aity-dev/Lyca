@@ -353,7 +353,6 @@
             });
         });
 
-        // EASTER EGG: Phrases fantomatiques près de la souris
         const ghostPhrases = [
             "Je suis là, petite sœur...",
             "On vivra ensemble...",
@@ -361,39 +360,32 @@
             "Tous les tuer...",
             "Je ne t'abandonnerai plus jamais...",
             "Nous sommes deux dans un seul corps...",
-            "Les souvenirs reviennent...",
-            "La flamme brûle encore..."
+            "Les tuers ne servira à rien...",
+            " Je me sens si seule... insoutenable",
         ];
 
         let mouseX = 0;
         let mouseY = 0;
 
-        // Suivre la position de la souris
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
 
-        // Fonction pour afficher un message fantomatique près de la souris
         function showGhostMessage() {
-            // Position au-dessus à droite de la souris
-            const x = mouseX + 20; // 20px à droite
-            const y = mouseY - 30; // 30px au-dessus
+            const x = mouseX + 20; 
+            const y = mouseY - 30; 
             
-            // Phrase aléatoire
             const randomPhrase = ghostPhrases[Math.floor(Math.random() * ghostPhrases.length)];
             
-            // Créer l'élément
             const ghostElement = document.createElement('div');
             ghostElement.className = 'ghost-message';
             ghostElement.textContent = randomPhrase;
             ghostElement.style.left = x + 'px';
             ghostElement.style.top = y + 'px';
             
-            // Ajouter au DOM
             document.body.appendChild(ghostElement);
             
-            // Supprimer après l'animation
             setTimeout(() => {
                 if (ghostElement.parentNode) {
                     ghostElement.parentNode.removeChild(ghostElement);
@@ -401,7 +393,6 @@
             }, 8000);
         }
 
-        // Démarrer les messages toutes les 10 secondes (fixe, sans reset)
         setInterval(showGhostMessage, 10000);
     </script>
 </body>
