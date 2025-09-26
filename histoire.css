@@ -128,9 +128,17 @@ body::before {
     box-shadow: 0 20px 40px rgba(138, 43, 226, 0.7);
 }
 
-.story-section {
-    margin: 40px auto;
-    padding: 50px;
+/* NOUVEAU: Container principal pour l'histoire */
+.story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NOUVEAU: Chapitres de l'histoire */
+.story-chapter {
+    margin: 60px 0;
+    padding: 40px;
     background: linear-gradient(135deg, 
         rgba(26, 5, 5, 0.95) 0%, 
         rgba(51, 17, 17, 0.9) 50%, 
@@ -140,14 +148,13 @@ body::before {
     box-shadow: 
         0 20px 50px rgba(255, 0, 0, 0.4),
         inset 0 0 30px rgba(255, 68, 68, 0.15);
-    width: 90%;
     backdrop-filter: blur(10px);
     position: relative;
     transition: all 0.5s ease;
     animation: fadeInUp 1s ease-out;
 }
 
-.story-section::before {
+.story-chapter::before {
     content: '';
     position: absolute;
     top: 0;
@@ -168,27 +175,30 @@ body::before {
     100% { opacity: 1; }
 }
 
-.story-section:hover {
-    transform: translateY(-10px);
+.story-chapter:hover {
+    transform: translateY(-5px);
     box-shadow: 
         0 30px 70px rgba(138, 43, 226, 0.5),
         inset 0 0 40px rgba(138, 43, 226, 0.2);
     border-color: rgba(138, 43, 226, 0.9);
 }
 
-.story-section h2 {
-    font-size: 38px;
+/* NOUVEAU: Titres de chapitres */
+.chapter-title {
+    font-size: 32px;
     color: #ffffff;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: center;
     font-family: 'Orbitron', monospace;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 
         0 0 20px #ff4444,
         0 0 40px #8a2be2;
     animation: titleShimmer 5s ease-in-out infinite alternate;
+    border-bottom: 2px solid rgba(255, 68, 68, 0.5);
+    padding-bottom: 15px;
 }
 
 @keyframes titleShimmer {
@@ -204,39 +214,86 @@ body::before {
     }
 }
 
-.story-section p {
+/* NOUVEAU: Blocs de texte organisés */
+.text-block {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border-left: 4px solid rgba(255, 69, 0, 0.6);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.text-block:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-left-color: rgba(138, 43, 226, 0.8);
+    transform: translateX(10px);
+}
+
+.text-block p {
     font-size: 18px;
-    line-height: 1.8;
+    line-height: 1.9;
     color: #ffffff;
     text-align: justify;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
 }
 
-.story-section p:hover {
-    transform: translateX(5px);
+.text-block p:last-child {
+    margin-bottom: 0;
 }
 
-.story-section p span {
+/* Style pour Lyca (orange) */
+.text-block p span.lyca {
     color: #ff4500;
     font-weight: 700;
     text-shadow: 0 0 15px #ff4500;
-    animation: nameGlow 3s ease-in-out infinite alternate;
+    animation: lycaGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes nameGlow {
+@keyframes lycaGlow {
     0% { text-shadow: 0 0 15px #ff4500; }
-    100% { text-shadow: 0 0 25px #ff4500, 0 0 35px #8a2be2; }
+    100% { text-shadow: 0 0 25px #ff4500, 0 0 35px #ff6600; }
 }
 
+/* Style pour Ivy (violet) */
+.text-block p span.ivy {
+    color: #8a2be2;
+    font-weight: 700;
+    text-shadow: 0 0 15px #8a2be2;
+    animation: ivyGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes ivyGlow {
+    0% { text-shadow: 0 0 15px #8a2be2; }
+    100% { text-shadow: 0 0 25px #8a2be2, 0 0 35px #9370db; }
+}
+
+/* Style par défaut pour les span sans classe (reste orange pour compatibilité) */
+.text-block p span {
+    color: #ff4500;
+    font-weight: 700;
+    text-shadow: 0 0 15px #ff4500;
+    animation: lycaGlow 3s ease-in-out infinite alternate;
+}
+
+/* NOUVEAU: Style pour les dialogues et pensées */
+.text-block p em {
+    color: #ffaa00;
+    font-style: italic;
+    text-shadow: 0 0 10px #ff6600;
+}
+
+/* Images - styles conservés mais améliorés */
 .image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin: 50px auto;
-    width: 90%;
+    margin: 60px auto;
+    width: 100%;
 }
 
 .image-container.single {
@@ -278,7 +335,7 @@ body::before {
         rgba(147, 112, 219, 1) 75%,
         rgba(138, 43, 226, 0.8) 90%,
         rgba(138, 43, 226, 0) 100%);
-    margin: 40px auto;
+    margin: 80px auto;
     border-radius: 3px;
     box-shadow: 
         0 0 20px rgba(255, 165, 0, 0.6),
@@ -312,6 +369,7 @@ body::before {
     }
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .story-title {
         font-size: 36px;
@@ -323,19 +381,34 @@ body::before {
         gap: 20px;
     }
     
-    .story-section {
-        margin: 20px auto;
-        padding: 30px 20px;
-        width: 95%;
+    .story-container {
+        padding: 0 10px;
     }
     
-    .story-section h2 {
+    .story-chapter {
+        margin: 30px 0;
+        padding: 25px 20px;
+    }
+    
+    .chapter-title {
         font-size: 24px;
+        margin-bottom: 30px;
+    }
+    
+    .text-block {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+    }
+    
+    .text-block p {
+        font-size: 16px;
+        line-height: 1.7;
     }
     
     .image-container {
         flex-direction: column;
         gap: 30px;
+        margin: 40px auto;
     }
     
     .image-container img,
